@@ -9,17 +9,22 @@
 import UIKit
 
 extension UIImageView {
-    func getImageFrom(path: String) {
-        guard let url = URL(string: path) else { return }
-        
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.image = image
+    func getImageFrom(path: String?) {
+        if let path = path {
+            let url = URL(string: path)!
+            
+            DispatchQueue.global().async { [weak self] in
+                if let data = try? Data(contentsOf: url) {
+                    if let image = UIImage(data: data) {
+                        DispatchQueue.main.async {
+                            self?.image = image
+                        }
                     }
                 }
             }
+            
+        } else {
+            self.image = UIImage()
         }
     }
 }
