@@ -10,15 +10,21 @@ import UIKit
 
 class MoviesViewController: UIViewController {
     
-    lazy var movies: [Movie] = {
-        var movies = [Movie]()
-        APIManager.shared.getUpComingMovies { result in
-            guard let result = result else { return }
-            movies = result.movies
-        }
-        return movies
-    }()
+    var viewModel: MoviesControllerViewModel
 
+    init(viewModel: MoviesControllerViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    lazy var moviesCollectionView: UICollectionView {
+        
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

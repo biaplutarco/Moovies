@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		5787D93D237367CA00FC01F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787D93C237367CA00FC01F2 /* AppDelegate.swift */; };
 		5787D93F237367CA00FC01F2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787D93E237367CA00FC01F2 /* SceneDelegate.swift */; };
-		5787D941237367CA00FC01F2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787D940237367CA00FC01F2 /* ViewController.swift */; };
+		5787D941237367CA00FC01F2 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787D940237367CA00FC01F2 /* MoviesViewController.swift */; };
 		5787D946237367CF00FC01F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5787D945237367CF00FC01F2 /* Assets.xcassets */; };
 		5787D949237367CF00FC01F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5787D947237367CF00FC01F2 /* LaunchScreen.storyboard */; };
 		5787D954237367CF00FC01F2 /* MooviesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787D953237367CF00FC01F2 /* MooviesTests.swift */; };
@@ -18,6 +18,8 @@
 		5787D971237381BC00FC01F2 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787D970237381BC00FC01F2 /* APIManager.swift */; };
 		5787D97923739B7400FC01F2 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787D97823739B7400FC01F2 /* Result.swift */; };
 		5787D97B23739B7E00FC01F2 /* Dates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787D97A23739B7E00FC01F2 /* Dates.swift */; };
+		5787D97D2373A14A00FC01F2 /* MoviesControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787D97C2373A14A00FC01F2 /* MoviesControllerViewModel.swift */; };
+		5787D97F2373A2C000FC01F2 /* UICollectionView+Dequeue+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787D97E2373A2C000FC01F2 /* UICollectionView+Dequeue+Register.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +43,7 @@
 		5787D939237367CA00FC01F2 /* Moovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5787D93C237367CA00FC01F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5787D93E237367CA00FC01F2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5787D940237367CA00FC01F2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5787D940237367CA00FC01F2 /* MoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
 		5787D945237367CF00FC01F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5787D948237367CF00FC01F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5787D94A237367CF00FC01F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -55,6 +57,8 @@
 		5787D970237381BC00FC01F2 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		5787D97823739B7400FC01F2 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		5787D97A23739B7E00FC01F2 /* Dates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dates.swift; sourceTree = "<group>"; };
+		5787D97C2373A14A00FC01F2 /* MoviesControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesControllerViewModel.swift; sourceTree = "<group>"; };
+		5787D97E2373A2C000FC01F2 /* UICollectionView+Dequeue+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Dequeue+Register.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +112,9 @@
 				5787D93C237367CA00FC01F2 /* AppDelegate.swift */,
 				5787D93E237367CA00FC01F2 /* SceneDelegate.swift */,
 				5787D970237381BC00FC01F2 /* APIManager.swift */,
-				5787D940237367CA00FC01F2 /* ViewController.swift */,
+				5787D940237367CA00FC01F2 /* MoviesViewController.swift */,
+				5787D97C2373A14A00FC01F2 /* MoviesControllerViewModel.swift */,
+				5787D97E2373A2C000FC01F2 /* UICollectionView+Dequeue+Register.swift */,
 				5787D96D2373804900FC01F2 /* Model */,
 				5787D945237367CF00FC01F2 /* Assets.xcassets */,
 				5787D947237367CF00FC01F2 /* LaunchScreen.storyboard */,
@@ -276,10 +282,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5787D97923739B7400FC01F2 /* Result.swift in Sources */,
-				5787D941237367CA00FC01F2 /* ViewController.swift in Sources */,
+				5787D941237367CA00FC01F2 /* MoviesViewController.swift in Sources */,
 				5787D93D237367CA00FC01F2 /* AppDelegate.swift in Sources */,
+				5787D97F2373A2C000FC01F2 /* UICollectionView+Dequeue+Register.swift in Sources */,
 				5787D971237381BC00FC01F2 /* APIManager.swift in Sources */,
 				5787D97B23739B7E00FC01F2 /* Dates.swift in Sources */,
+				5787D97D2373A14A00FC01F2 /* MoviesControllerViewModel.swift in Sources */,
 				5787D96F2373805900FC01F2 /* Movie.swift in Sources */,
 				5787D93F237367CA00FC01F2 /* SceneDelegate.swift in Sources */,
 			);
