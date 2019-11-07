@@ -10,13 +10,27 @@ import UIKit
 
 class MoviesControllerViewModel {
     
-    lazy var movies: [Movie] = {
-        var movies = [Movie]()
-        APIManager.shared.getUpComingMovies { result in
-            guard let result = result else { return }
-            movies = result.movies
-        }
-        return movies
-    }()
+    var needReload: (() -> Void)?
     
+    private var movies: [Movie] = []
+    
+    init() {
+        getMovies()
+    }
+    
+    func getNumberOfItems() -> Int {
+        return movies.count
+    }
+    
+    func getMovies() {
+        APIManager.shared.getUpComingMovies { [weak self] result in
+            guard let result = result else { return }
+            self?.movies.append(contentsOf: result.movies)
+            self?.needReload?()
+        }
+    }
+    
+    func getMovieCellViewModelTo(indexPath: IndexPath) -> MoviesCellViewModel {
+        return MoviesCellViewModel(movie: movies[indexPath.row])
+    }
 }
