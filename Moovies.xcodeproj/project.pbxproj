@@ -14,6 +14,10 @@
 		5787D949237367CF00FC01F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5787D947237367CF00FC01F2 /* LaunchScreen.storyboard */; };
 		5787D954237367CF00FC01F2 /* MooviesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787D953237367CF00FC01F2 /* MooviesTests.swift */; };
 		5787D95F237367CF00FC01F2 /* MooviesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787D95E237367CF00FC01F2 /* MooviesUITests.swift */; };
+		5787D96F2373805900FC01F2 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787D96E2373805900FC01F2 /* Movie.swift */; };
+		5787D971237381BC00FC01F2 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787D970237381BC00FC01F2 /* APIManager.swift */; };
+		5787D97923739B7400FC01F2 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787D97823739B7400FC01F2 /* Result.swift */; };
+		5787D97B23739B7E00FC01F2 /* Dates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787D97A23739B7E00FC01F2 /* Dates.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +51,10 @@
 		5787D95A237367CF00FC01F2 /* MooviesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MooviesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5787D95E237367CF00FC01F2 /* MooviesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MooviesUITests.swift; sourceTree = "<group>"; };
 		5787D960237367CF00FC01F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5787D96E2373805900FC01F2 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		5787D970237381BC00FC01F2 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		5787D97823739B7400FC01F2 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		5787D97A23739B7E00FC01F2 /* Dates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dates.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +107,9 @@
 			children = (
 				5787D93C237367CA00FC01F2 /* AppDelegate.swift */,
 				5787D93E237367CA00FC01F2 /* SceneDelegate.swift */,
+				5787D970237381BC00FC01F2 /* APIManager.swift */,
 				5787D940237367CA00FC01F2 /* ViewController.swift */,
+				5787D96D2373804900FC01F2 /* Model */,
 				5787D945237367CF00FC01F2 /* Assets.xcassets */,
 				5787D947237367CF00FC01F2 /* LaunchScreen.storyboard */,
 				5787D94A237367CF00FC01F2 /* Info.plist */,
@@ -123,6 +133,16 @@
 				5787D960237367CF00FC01F2 /* Info.plist */,
 			);
 			path = MooviesUITests;
+			sourceTree = "<group>";
+		};
+		5787D96D2373804900FC01F2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5787D97823739B7400FC01F2 /* Result.swift */,
+				5787D96E2373805900FC01F2 /* Movie.swift */,
+				5787D97A23739B7E00FC01F2 /* Dates.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,8 +275,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5787D97923739B7400FC01F2 /* Result.swift in Sources */,
 				5787D941237367CA00FC01F2 /* ViewController.swift in Sources */,
 				5787D93D237367CA00FC01F2 /* AppDelegate.swift in Sources */,
+				5787D971237381BC00FC01F2 /* APIManager.swift in Sources */,
+				5787D97B23739B7E00FC01F2 /* Dates.swift in Sources */,
+				5787D96F2373805900FC01F2 /* Movie.swift in Sources */,
 				5787D93F237367CA00FC01F2 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
