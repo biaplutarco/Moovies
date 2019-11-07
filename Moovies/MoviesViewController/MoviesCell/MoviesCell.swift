@@ -14,6 +14,7 @@ class MoviesCell: UICollectionViewCell {
         didSet {
             releaseDateLabel.text = viewModel.realeseDate
             posterImageView.getImageFrom(path: viewModel.posterPath)
+            setupView()
         }
     }
     
@@ -28,15 +29,7 @@ class MoviesCell: UICollectionViewCell {
         label.text = "loading"
         return label
     }()
-    
-    init() {
-        super.init(frame: CGRect.zero)
-        setupView()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+
 }
 
 extension MoviesCell: ViewCodable {
