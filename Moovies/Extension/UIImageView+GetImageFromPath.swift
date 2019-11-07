@@ -11,7 +11,7 @@ import UIKit
 extension UIImageView {
     func getImageFrom(path: String?) {
         if let path = path {
-            let url = URL(string: path)!
+            let url = URL(string: "https://image.tmdb.org/t/p/w500\(path)")!
             
             DispatchQueue.global().async { [weak self] in
                 if let data = try? Data(contentsOf: url) {
