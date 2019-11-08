@@ -41,7 +41,7 @@ class MovieCell: UICollectionViewCell {
         button.setImage(#imageLiteral(resourceName: "starFill"), for: .selected)
         button.addTarget(self, action: #selector(favorite(_:)), for: .touchUpInside)
         
-        if defaults.bool(forKey: "\(viewModel.id)") == true {
+        if viewModel.isFavoriteMovie() == true {
             button.isSelected = true
         } else {
             button.isSelected = false
@@ -62,10 +62,14 @@ class MovieCell: UICollectionViewCell {
         sender.isSelected.toggle()
         
         if sender.isSelected == true {
-            defaults.set(true, forKey: "\(viewModel.id)")
+            viewModel.setFavoriteMovie(true)
         } else {
-            defaults.set(false, forKey: "\(viewModel.id)")
+            viewModel.setFavoriteMovie(false)
         }
+    }
+    
+    func isFavoreMovie() {
+        
     }
 }
 

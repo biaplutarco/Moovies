@@ -9,6 +9,8 @@
 import UIKit
 
 class MovieCellViewModel {
+    let defaults = UserDefaults.standard
+
     var posterPath: String?
     var title: String
     var id: Int
@@ -19,6 +21,13 @@ class MovieCellViewModel {
         self.id = movie.id
     }
     
+    func setFavoriteMovie(_ bool: Bool) {
+        defaults.set(bool, forKey: "\(id)")
+    }
+    
+    func isFavoriteMovie() -> Bool {
+        return defaults.bool(forKey: "\(id)")
+    }
 }
 
 extension MovieCellViewModel: CellViewModeling {
