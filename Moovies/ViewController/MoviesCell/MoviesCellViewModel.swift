@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MoviesCellViewModel {
+class MovieCellViewModel {
     var posterPath: String?
     var realeseDate: String
     
@@ -16,4 +16,8 @@ class MoviesCellViewModel {
         self.posterPath = movie.posterPath
         self.realeseDate = movie.releaseDate
     }
+}
+
+extension MovieCellViewModel: CellViewModeling {
+    
 }
