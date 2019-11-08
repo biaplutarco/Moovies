@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum Favorite: String {
+    case favorite = "star"
+    case unfavorite = "starFill"
+}
+
 class MovieCell: UICollectionViewCell {
     
     var viewModel: MovieCellViewModel! {
@@ -30,7 +35,9 @@ class MovieCell: UICollectionViewCell {
     lazy var favoriteButton: UIButton = {
         let button = UIButton()
         button.setImage(#imageLiteral(resourceName: "star"), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "starFill"), for: .selected)
         button.imageView?.tintColor = .yellow
+        button.addTarget(self, action: #selector(favorite(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -41,6 +48,10 @@ class MovieCell: UICollectionViewCell {
         label.numberOfLines = 2
         return label
     }()
+    
+    @objc func favorite(_ sender: UIButton) {
+        sender.isSelected.toggle()
+    }
 }
 
 extension MovieCell: ViewCoding {
