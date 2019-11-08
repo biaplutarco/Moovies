@@ -71,8 +71,8 @@ extension CollectionViewController: ViewCoding {
         
         NSLayoutConstraint.activate([
             moviesCollectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            moviesCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            moviesCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            moviesCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12),
+            moviesCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12),
             moviesCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }

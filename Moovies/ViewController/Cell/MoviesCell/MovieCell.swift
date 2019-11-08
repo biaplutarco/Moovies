@@ -12,7 +12,7 @@ class MovieCell: UICollectionViewCell {
     
     var viewModel: MovieCellViewModel! {
         didSet {
-            releaseDateLabel.text = viewModel.title
+            titleLabel.text = viewModel.title
             posterImageView.getImageFrom(path: viewModel.posterPath)
             setupView()
         }
@@ -27,40 +27,55 @@ class MovieCell: UICollectionViewCell {
         return imageView
     }()
     
-    lazy var releaseDateLabel: UILabel = {
+    lazy var favoriteButton: UIButton = {
+        let button = UIButton()
+        button.setImage(#imageLiteral(resourceName: "star"), for: .normal)
+        button.imageView?.tintColor = .yellow
+        return button
+    }()
+    
+    lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .lightGray
         label.text = "loading"
-        label.textAlignment = .center
         label.numberOfLines = 2
         return label
     }()
-
 }
 
 extension MovieCell: ViewCoding {
     func buildViewHierarchy() {
-        addSubview(releaseDateLabel)
+        addSubview(favoriteButton)
+        addSubview(titleLabel)
         addSubview(posterImageView)
     }
     
     func setupConstraints() {
-        releaseDateLabel.translatesAutoresizingMaskIntoConstraints = false
+        favoriteButton.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         posterImageView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            releaseDateLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-            releaseDateLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            releaseDateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            favoriteButton.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            favoriteButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            favoriteButton.heightAnchor.constraint(equalToConstant: 30),
+            favoriteButton.widthAnchor.constraint(equalTo: favoriteButton.heightAnchor),
             
-            posterImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 12),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            titleLabel.trailingAnchor.constraint(equalTo: favoriteButton.leadingAnchor, constant: -8),
+            
             posterImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.8),
-            posterImageView.widthAnchor.constraint(equalTo: posterImageView.heightAnchor, multiplier: 0.6),
+            posterImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            posterImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
             posterImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8)
         ])
     }
     
     func setupAdditionalConfiguration() {
         backgroundColor = .clear
+        layer.borderColor = UIColor.darkGray.cgColor
+        layer.cornerRadius = 10
+        layer.borderWidth = 0.5
     }
 }
