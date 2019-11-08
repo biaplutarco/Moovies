@@ -11,13 +11,14 @@ import UIKit
 class MovieCellViewModel {
     var posterPath: String?
     var title: String
-    var index: Int
+    var id: Int
     
-    init(movie: Movie, index: Int) {
+    init(movie: Movie) {
         self.posterPath = movie.posterPath
         self.title = movie.title
-        self.index = index
+        self.id = movie.id
     }
+    
 }
 
 extension MovieCellViewModel: CellViewModeling {

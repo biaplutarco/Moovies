@@ -31,7 +31,7 @@ extension MoviesControllerViewModel: ControllerViewModeling {
     }
     
     func getCellViewModelTo(indexPath: IndexPath) -> CellViewModeling {
-        return MovieCellViewModel(movie: movies[indexPath.row], index: indexPath.row)
+        return MovieCellViewModel(movie: movies[indexPath.row])
     }
     
     func getResults() {
