@@ -9,22 +9,19 @@
 import UIKit
 
 class GenresControllerViewModel {
-    
-    var collectionViewCell: UICollectionViewCell.Type
-    
+        
     var needReload: (() -> Void)?
     
     var title: String = "Genres"
     
     private var genres: [Genre] = []
 
-    init(collectionViewCell: UICollectionViewCell.Type) {
-        self.collectionViewCell = collectionViewCell
+    init() {
         getResults()
     }
     
-    func didSelectItemAt(indexPath: IndexPath) {
-        
+    func didSelectItemAt(indexPath: IndexPath) -> Int {
+        return genres[indexPath.row].id
     }
 }
 

@@ -9,9 +9,9 @@
 import UIKit
 
 protocol ControllerViewModeling {
-    var collectionViewCell: UICollectionViewCell.Type { get set }
     var needReload: (() -> Void)? { get set }
     var title: String { get }
+    
     func getResults()
     func getNumberOfItems() -> Int
     func getSizeOfItemsTo(collectionView: UICollectionView) -> CGSize

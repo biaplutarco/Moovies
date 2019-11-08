@@ -9,17 +9,17 @@
 import UIKit
 
 class MoviesControllerViewModel {
-    
-    var collectionViewCell: UICollectionViewCell.Type
-    
+        
     var needReload: (() -> Void)?
     
     var title: String = "Movies"
     
+    var genreID: Int
+    
     private var movies: [Movie] = []
     
-    init(collectionViewCell: UICollectionViewCell.Type) {
-        self.collectionViewCell = collectionViewCell
+    init(genreID: Int) {
+        self.genreID = genreID
         getResults()
     }
 }
@@ -34,7 +34,7 @@ extension MoviesControllerViewModel: ControllerViewModeling {
     }
     
     func getResults() {
-        let url = APIManager.shared.getURLMoviesFromGenres("28%2C%2012")
+        let url = APIManager.shared.getURLMoviesFromGenres("\(genreID)")
         APIManager.shared.get(url: url, type: Result.self) { [weak self] result in
             guard let result = result else { return }
             self?.movies.append(contentsOf: result.movies)

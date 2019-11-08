@@ -17,16 +17,10 @@ class CollectionViewController: UIViewController {
     
     var viewModelType: ControllerViewModelingType
     
-    lazy var viewModel: ControllerViewModeling = {
-        switch viewModelType {
-        case .genre:
-            return GenresControllerViewModel(collectionViewCell: GenreCell.self)
-        case .movie:
-            return MoviesControllerViewModel(collectionViewCell: MovieCell.self)
-        }
-    }()
+    var viewModel: ControllerViewModeling
             
-    init(viewModelOfType type: ControllerViewModelingType) {
+    init(viewModel: ControllerViewModeling, OfType type: ControllerViewModelingType) {
+        self.viewModel = viewModel
         self.viewModelType = type
         super.init(nibName: nil, bundle: nil)
     }
@@ -124,7 +118,11 @@ extension CollectionViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch viewModelType {
         case .genre:
-            let movieViewController = CollectionViewController(viewModelOfType: .movie)
+            guard let viewModel = viewModel as? GenresControllerViewModel else { return }
+            let genreID = viewModel.didSelectItemAt(indexPath: indexPath)
+            let movieViewModel = MoviesControllerViewModel(genreID: genreID)
+            
+            let movieViewController = CollectionViewController(viewModel: movieViewModel, OfType: .movie)
             navigationController?.pushViewController(movieViewController, animated: true)
         case .movie:
             print("a")
