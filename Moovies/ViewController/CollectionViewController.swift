@@ -56,8 +56,11 @@ class CollectionViewController: UIViewController {
     
     private func setupNavigationBar() {
         self.title = viewModel.title
+        navigationController?.navigationBar.tintColor = .yellow
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.standardAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        let button = UIBarButtonItem(title: "Favorite", style: .done, target: self, action: nil)
+        navigationItem.rightBarButtonItem = button
     }
 }
 
@@ -125,7 +128,7 @@ extension CollectionViewController: UICollectionViewDelegate, UICollectionViewDa
             let movieViewController = CollectionViewController(viewModel: movieViewModel, OfType: .movie)
             navigationController?.pushViewController(movieViewController, animated: true)
         case .movie:
-            print("a")
+            print("did selext item ate \(indexPath.row)")
         }
     }
     
