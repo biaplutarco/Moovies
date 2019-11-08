@@ -32,7 +32,7 @@ class MoviesCell: UICollectionViewCell {
 
 }
 
-extension MoviesCell: ViewCodable {
+extension MoviesCell: ViewCoding {
     func buildViewHierarchy() {
         addSubview(releaseDateLabel)
         addSubview(posterImageView)

@@ -1,5 +1,5 @@
 //
-//  ViewCodable.swift
+//  ViewCoding.swift
 //  Moovies
 //
 //  Created by aluno on 06/11/19.
@@ -8,13 +8,13 @@
 
 import Foundation
 
-protocol ViewCodable {
+protocol ViewCoding {
     func buildViewHierarchy()
     func setupConstraints()
     func setupAdditionalConfiguration()
 }
 
-extension ViewCodable {
+extension ViewCoding {
     func setupView() {
         buildViewHierarchy()
         setupConstraints()

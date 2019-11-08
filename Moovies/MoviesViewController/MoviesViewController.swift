@@ -37,7 +37,7 @@ class MoviesViewController: UIViewController {
     }
 }
 
-extension MoviesViewController: ViewCodable {
+extension MoviesViewController: ViewCoding {
     func buildViewHierarchy() {
         view.addSubview(moviesCollectionView)
     }
