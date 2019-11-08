@@ -56,11 +56,17 @@ class CollectionViewController: UIViewController {
     
     private func setupNavigationBar() {
         self.title = viewModel.title
-        navigationController?.navigationBar.tintColor = .yellow
+        navigationController?.navigationBar.tintColor = .action
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.standardAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        let button = UIBarButtonItem(title: "Favorite", style: .done, target: self, action: nil)
+        let button = UIBarButtonItem(title: "Favorite", style: .plain, target: self ,action: #selector(favoriteTapped))
         navigationItem.rightBarButtonItem = button
+    }
+    
+    @objc func favoriteTapped() {
+        let favoriteViewModel = FavoriteControllerViewModel()
+        let movieViewController = CollectionViewController(viewModel: favoriteViewModel, OfType: .movie)
+        navigationController?.present(movieViewController, animated: true, completion: nil)
     }
 }
 
@@ -81,7 +87,7 @@ extension CollectionViewController: ViewCoding {
     }
     
     func setupAdditionalConfiguration() {
-        view.backgroundColor = .black
+        view.backgroundColor = .background
         setupNavigationBar()
         
         viewModel.needReload = {

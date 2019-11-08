@@ -35,6 +35,8 @@
 		57DFC50523761602003698D0 /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DFC50423761602003698D0 /* CoreDataModel.swift */; };
 		57DFC50723761650003698D0 /* NSManagedObject+className.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DFC50623761650003698D0 /* NSManagedObject+className.swift */; };
 		57DFC50F23761874003698D0 /* FavoriteMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DFC50E23761874003698D0 /* FavoriteMovie.swift */; };
+		57DFC51323761AB4003698D0 /* FavoriteControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DFC51223761AB4003698D0 /* FavoriteControllerViewModel.swift */; };
+		57DFC51523762475003698D0 /* UIColor+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DFC51423762475003698D0 /* UIColor+AppColors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +91,8 @@
 		57DFC50423761602003698D0 /* CoreDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataModel.swift; sourceTree = "<group>"; };
 		57DFC50623761650003698D0 /* NSManagedObject+className.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+className.swift"; sourceTree = "<group>"; };
 		57DFC50E23761874003698D0 /* FavoriteMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMovie.swift; sourceTree = "<group>"; };
+		57DFC51223761AB4003698D0 /* FavoriteControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteControllerViewModel.swift; sourceTree = "<group>"; };
+		57DFC51423762475003698D0 /* UIColor+AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AppColors.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +202,7 @@
 				57DFC50623761650003698D0 /* NSManagedObject+className.swift */,
 				5787D97E2373A2C000FC01F2 /* UICollectionView+Dequeue+Register.swift */,
 				5787D9832373A63E00FC01F2 /* UIImageView+GetImageFromPath.swift */,
+				57DFC51423762475003698D0 /* UIColor+AppColors.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -253,6 +258,7 @@
 			children = (
 				5787D9972375071800FC01F2 /* GenresControllerViewModel.swift */,
 				5787D97C2373A14A00FC01F2 /* MoviesControllerViewModel.swift */,
+				57DFC51223761AB4003698D0 /* FavoriteControllerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -419,7 +425,9 @@
 				5787D97923739B7400FC01F2 /* Result.swift in Sources */,
 				5787D941237367CA00FC01F2 /* CollectionViewController.swift in Sources */,
 				5787D9842373A63E00FC01F2 /* UIImageView+GetImageFromPath.swift in Sources */,
+				57DFC51523762475003698D0 /* UIColor+AppColors.swift in Sources */,
 				5787D93D237367CA00FC01F2 /* AppDelegate.swift in Sources */,
+				57DFC51323761AB4003698D0 /* FavoriteControllerViewModel.swift in Sources */,
 				5787D97F2373A2C000FC01F2 /* UICollectionView+Dequeue+Register.swift in Sources */,
 				57DFC50723761650003698D0 /* NSManagedObject+className.swift in Sources */,
 				5787D98A2373AB9600FC01F2 /* ViewCoding.swift in Sources */,

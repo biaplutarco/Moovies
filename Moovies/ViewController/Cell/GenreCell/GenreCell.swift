@@ -18,7 +18,7 @@ class GenreCell: UICollectionViewCell {
     
     lazy var genreLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .lightGray
+        label.textColor = .text
         label.text = "loading"
         return label
     }()

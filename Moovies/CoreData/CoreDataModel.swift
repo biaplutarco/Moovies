@@ -47,4 +47,16 @@ extension CoreDataModel where Self: NSManagedObject {
             return []
         }
     }
+    
+    static func find(predicate: NSPredicate) -> [Self] {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Self.className)
+        fetchRequest.predicate = predicate
+        
+        do {
+            return try context.fetch(fetchRequest) as! [Self]
+        } catch {
+            print(error)
+            return []
+        }
+    }
 }

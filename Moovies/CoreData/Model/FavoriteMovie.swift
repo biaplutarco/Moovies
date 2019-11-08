@@ -10,4 +10,5 @@ import Foundation
 import CoreData
 
 @objc(FavoriteMovie)
-final class FavoriteMovie: NSManagedObject, CoreDataModel {}
+final class FavoriteMovie: NSManagedObject, CoreDataModel {
+}

@@ -12,7 +12,6 @@ protocol ControllerViewModeling {
     var needReload: (() -> Void)? { get set }
     var title: String { get }
     
-    func getResults()
     func getNumberOfItems() -> Int
     func getSizeOfItemsTo(collectionView: UICollectionView) -> CGSize
     func getCellViewModelTo(indexPath: IndexPath) -> CellViewModeling

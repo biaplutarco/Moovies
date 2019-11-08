@@ -36,7 +36,7 @@ class MovieCell: UICollectionViewCell {
     
     lazy var favoriteButton: UIButton = {
         let button = UIButton()
-        button.imageView?.tintColor = .yellow
+        button.imageView?.tintColor = .action
         button.setImage(#imageLiteral(resourceName: "star"), for: .normal)
         button.setImage(#imageLiteral(resourceName: "starFill"), for: .selected)
         button.addTarget(self, action: #selector(favorite(_:)), for: .touchUpInside)
