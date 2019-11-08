@@ -10,14 +10,9 @@ import Foundation
 
 struct Result: Codable {
     var movies: [Movie]
-    var dates: Dates
-    var page: Int
-    var totalPages: Int
     
     enum CodingKeys: String, CodingKey {
-        case page, dates
         case movies = "results"
-        case totalPages = "total_pages"
     }
 }
 
