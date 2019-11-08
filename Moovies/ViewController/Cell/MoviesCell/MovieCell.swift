@@ -12,7 +12,7 @@ class MovieCell: UICollectionViewCell {
     
     var viewModel: MovieCellViewModel! {
         didSet {
-            releaseDateLabel.text = viewModel.realeseDate
+            releaseDateLabel.text = viewModel.title
             posterImageView.getImageFrom(path: viewModel.posterPath)
             setupView()
         }
@@ -59,6 +59,6 @@ extension MovieCell: ViewCoding {
     }
     
     func setupAdditionalConfiguration() {
-        backgroundColor = .clear
+        backgroundColor = .orange
     }
 }

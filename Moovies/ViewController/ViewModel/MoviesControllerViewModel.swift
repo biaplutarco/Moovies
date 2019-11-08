@@ -34,7 +34,7 @@ extension MoviesControllerViewModel: ControllerViewModeling {
     }
     
     func getResults() {
-        let url = APIManager.shared.getURLMoviesFromGenres("28%2C12")
+        let url = APIManager.shared.getURLMoviesFromGenres("28%2C%2012")
         APIManager.shared.get(url: url, type: Result.self) { [weak self] result in
             guard let result = result else { return }
             self?.movies.append(contentsOf: result.movies)

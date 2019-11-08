@@ -121,9 +121,15 @@ extension CollectionViewController: UICollectionViewDelegate, UICollectionViewDa
         return viewModel.getSizeOfItemsTo(collectionView: collectionView)
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//
-//    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch viewModelType {
+        case .genre:
+            let movieViewController = CollectionViewController(viewModelOfType: .movie)
+            navigationController?.pushViewController(movieViewController, animated: true)
+        case .movie:
+            print("a")
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return CGFloat(10)

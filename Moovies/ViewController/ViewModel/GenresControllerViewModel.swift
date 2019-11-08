@@ -22,6 +22,10 @@ class GenresControllerViewModel {
         self.collectionViewCell = collectionViewCell
         getResults()
     }
+    
+    func didSelectItemAt(indexPath: IndexPath) {
+        
+    }
 }
 
 extension GenresControllerViewModel: ControllerViewModeling {

@@ -10,11 +10,11 @@ import UIKit
 
 class MovieCellViewModel {
     var posterPath: String?
-    var realeseDate: String
+    var title: String
     
     init(movie: Movie) {
         self.posterPath = movie.posterPath
-        self.realeseDate = movie.releaseDate
+        self.title = movie.title
     }
 }
 
