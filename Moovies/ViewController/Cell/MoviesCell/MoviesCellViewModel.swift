@@ -11,10 +11,12 @@ import UIKit
 class MovieCellViewModel {
     var posterPath: String?
     var title: String
+    var index: Int
     
-    init(movie: Movie) {
+    init(movie: Movie, index: Int) {
         self.posterPath = movie.posterPath
         self.title = movie.title
+        self.index = index
     }
 }
 

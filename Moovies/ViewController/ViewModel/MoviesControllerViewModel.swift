@@ -27,11 +27,11 @@ class MoviesControllerViewModel {
 
 extension MoviesControllerViewModel: ControllerViewModeling {
     func getSizeOfItemsTo(collectionView: UICollectionView) -> CGSize {
-        return CGSize(width: 180, height: 300)
+        return CGSize(width: 180, height: 320)
     }
     
     func getCellViewModelTo(indexPath: IndexPath) -> CellViewModeling {
-        return MovieCellViewModel(movie: movies[indexPath.row])
+        return MovieCellViewModel(movie: movies[indexPath.row], index: indexPath.row)
     }
     
     func getResults() {

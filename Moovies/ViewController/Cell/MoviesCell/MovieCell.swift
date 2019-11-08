@@ -15,6 +15,8 @@ enum Favorite: String {
 
 class MovieCell: UICollectionViewCell {
     
+    let defaults = UserDefaults.standard
+    
     var viewModel: MovieCellViewModel! {
         didSet {
             titleLabel.text = viewModel.title
@@ -34,10 +36,17 @@ class MovieCell: UICollectionViewCell {
     
     lazy var favoriteButton: UIButton = {
         let button = UIButton()
+        button.imageView?.tintColor = .yellow
         button.setImage(#imageLiteral(resourceName: "star"), for: .normal)
         button.setImage(#imageLiteral(resourceName: "starFill"), for: .selected)
-        button.imageView?.tintColor = .yellow
         button.addTarget(self, action: #selector(favorite(_:)), for: .touchUpInside)
+        
+        if defaults.bool(forKey: "Favorite") == true {
+            button.isSelected = true
+        } else {
+            button.isSelected = false
+        }
+        
         return button
     }()
     
@@ -51,6 +60,12 @@ class MovieCell: UICollectionViewCell {
     
     @objc func favorite(_ sender: UIButton) {
         sender.isSelected.toggle()
+        
+        if sender.isSelected == true {
+            defaults.set(true, forKey: "FavoriteDic")
+        } else {
+            defaults.set(false, forKey: "Favorite")
+        }
     }
 }
 
@@ -67,10 +82,10 @@ extension MovieCell: ViewCoding {
         posterImageView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            favoriteButton.topAnchor.constraint(equalTo: topAnchor, constant: 8),
             favoriteButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
             favoriteButton.heightAnchor.constraint(equalToConstant: 30),
             favoriteButton.widthAnchor.constraint(equalTo: favoriteButton.heightAnchor),
+            favoriteButton.bottomAnchor.constraint(equalTo: posterImageView.topAnchor, constant: -12),
             
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 12),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
@@ -85,8 +100,8 @@ extension MovieCell: ViewCoding {
     
     func setupAdditionalConfiguration() {
         backgroundColor = .clear
-        layer.borderColor = UIColor.darkGray.cgColor
-        layer.cornerRadius = 10
-        layer.borderWidth = 0.5
+//        layer.borderColor = UIColor.darkGray.cgColor
+//        layer.cornerRadius = 10
+//        layer.borderWidth = 0.5
     }
 }
