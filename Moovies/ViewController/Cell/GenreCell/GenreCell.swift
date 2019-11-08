@@ -34,9 +34,10 @@ extension GenreCell: ViewCoding {
         genreLabel.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            genreLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            genreLabel.topAnchor.constraint(equalTo: topAnchor),
             genreLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            genreLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 8)
+            genreLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            genreLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
     

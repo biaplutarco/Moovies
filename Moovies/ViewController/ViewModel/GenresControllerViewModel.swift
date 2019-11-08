@@ -25,8 +25,8 @@ class GenresControllerViewModel {
 }
 
 extension GenresControllerViewModel: ControllerViewModeling {
-    func getSizeOfItems() -> CGSize {
-        return CGSize(width: 110, height: 50)
+    func getSizeOfItemsTo(collectionView: UICollectionView) -> CGSize {
+        return CGSize(width: collectionView.frame.size.width, height: 50)
     }
     
     func getCellViewModelTo(indexPath: IndexPath) -> CellViewModeling {

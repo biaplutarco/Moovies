@@ -178,8 +178,7 @@
 			children = (
 				5787D940237367CA00FC01F2 /* CollectionViewController.swift */,
 				5787D99F2375C0F400FC01F2 /* ViewModel */,
-				5787D9992375072100FC01F2 /* GenreCell */,
-				5787D9882373A97B00FC01F2 /* MoviesCell */,
+				5787D9A02375C29600FC01F2 /* Cell */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -246,6 +245,15 @@
 				5787D9972375071800FC01F2 /* GenresControllerViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		5787D9A02375C29600FC01F2 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				5787D9992375072100FC01F2 /* GenreCell */,
+				5787D9882373A97B00FC01F2 /* MoviesCell */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

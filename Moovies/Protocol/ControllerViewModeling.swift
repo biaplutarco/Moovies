@@ -14,6 +14,6 @@ protocol ControllerViewModeling {
     var title: String { get }
     func getResults()
     func getNumberOfItems() -> Int
-    func getSizeOfItems() -> CGSize
+    func getSizeOfItemsTo(collectionView: UICollectionView) -> CGSize
     func getCellViewModelTo(indexPath: IndexPath) -> CellViewModeling
 }

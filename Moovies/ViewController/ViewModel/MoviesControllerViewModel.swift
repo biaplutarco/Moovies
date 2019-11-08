@@ -25,7 +25,7 @@ class MoviesControllerViewModel {
 }
 
 extension MoviesControllerViewModel: ControllerViewModeling {
-    func getSizeOfItems() -> CGSize {
+    func getSizeOfItemsTo(collectionView: UICollectionView) -> CGSize {
         return CGSize(width: 200, height: 300)
     }
     
