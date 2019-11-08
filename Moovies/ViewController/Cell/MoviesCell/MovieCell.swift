@@ -31,6 +31,8 @@ class MovieCell: UICollectionViewCell {
         let label = UILabel()
         label.textColor = .lightGray
         label.text = "loading"
+        label.textAlignment = .center
+        label.numberOfLines = 2
         return label
     }()
 
@@ -48,8 +50,8 @@ extension MovieCell: ViewCoding {
 
         NSLayoutConstraint.activate([
             releaseDateLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-            releaseDateLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            releaseDateLabel.bottomAnchor.constraint(equalTo: posterImageView.topAnchor, constant: 8),
+            releaseDateLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            releaseDateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
             
             posterImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             posterImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.8),
@@ -59,6 +61,6 @@ extension MovieCell: ViewCoding {
     }
     
     func setupAdditionalConfiguration() {
-        backgroundColor = .orange
+        backgroundColor = .clear
     }
 }
