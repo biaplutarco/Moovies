@@ -12,14 +12,15 @@ class MoviesControllerViewModel {
         
     var needReload: (() -> Void)?
     
-    var title: String = "Movies"
+    var title: String
     
     var genreID: Int
     
     private var movies: [Movie] = []
     
-    init(genreID: Int) {
-        self.genreID = genreID
+    init(genre: Genre) {
+        self.genreID = genre.id
+        self.title = genre.name
         getResults()
     }
 }

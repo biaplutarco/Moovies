@@ -20,8 +20,8 @@ class GenresControllerViewModel {
         getResults()
     }
     
-    func didSelectItemAt(indexPath: IndexPath) -> Int {
-        return genres[indexPath.row].id
+    func didSelectItemAt(indexPath: IndexPath) -> Genre {
+        return genres[indexPath.row]
     }
 }
 

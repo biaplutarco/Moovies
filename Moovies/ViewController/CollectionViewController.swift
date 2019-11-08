@@ -119,8 +119,8 @@ extension CollectionViewController: UICollectionViewDelegate, UICollectionViewDa
         switch viewModelType {
         case .genre:
             guard let viewModel = viewModel as? GenresControllerViewModel else { return }
-            let genreID = viewModel.didSelectItemAt(indexPath: indexPath)
-            let movieViewModel = MoviesControllerViewModel(genreID: genreID)
+            let genre = viewModel.didSelectItemAt(indexPath: indexPath)
+            let movieViewModel = MoviesControllerViewModel(genre: genre)
             
             let movieViewController = CollectionViewController(viewModel: movieViewModel, OfType: .movie)
             navigationController?.pushViewController(movieViewController, animated: true)
