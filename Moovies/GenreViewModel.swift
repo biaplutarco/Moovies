@@ -36,20 +36,20 @@ class GenreViewModel: CollectionViewModeling {
     }
     
     func dequeueCellTo(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
-        collectionView.dequeueCell(of: Genre.self, forIndexPath: indexPath)
+        let cell = collectionView.dequeueCell(of: GenreCell.self, forIndexPath: indexPath)
+        
+        if let genre = data[indexPath.row] as? Genre {
+            cell.viewModel = GenreCellViewModel(genre: genre)
+        }
+        
+        return cell
     }
     
-    func getCellViewModelTo(indexPath: IndexPath) {
-        <#code#>
-    }
-    
-    func getItemSizeTo(collectionView: UICollectionView) {
-        <#code#>
+    func getItemSizeTo(collectionView: UICollectionView) -> CGSize {
+        return CGSize(width: collectionView.frame.size.width, height: 50)
     }
     
     func didSelectItemAt(indexPath: IndexPath) {
-        <#code#>
+        
     }
-    
-    
 }
