@@ -9,11 +9,9 @@
 import UIKit
 
 class GenreCellViewModel {
-    var id: String?
     var name: String
     
     init(genre: Genre) {
-        self.id = "\(genre.id)"
         self.name = genre.name
     }
 }

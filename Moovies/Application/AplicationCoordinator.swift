@@ -42,7 +42,9 @@ extension AplicationCoordinator: CollectionViewModelDelegate {
 extension AplicationCoordinator: CollectionViewControllerDelegate {
     func didTappedFavorites() {
         let favoriteViewModel = FavoriteViewModel()
+        favoriteViewModel.delegate = self
         let favoriteViewController = CollectionViewController(viewModel: favoriteViewModel)
+        favoriteViewController.delegate = self
         self.navigationController.present(favoriteViewController, animated: true, completion: nil)
     }
 }

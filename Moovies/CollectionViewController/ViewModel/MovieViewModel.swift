@@ -59,6 +59,25 @@ class MovieViewModel: CollectionViewModeling {
     }
     
     func didSelectItemAt(indexPath: IndexPath) {
-//        salvar o filme favorito
+        guard let movie = data[indexPath.row] as? Movie else { return }
+        
+        var ids = [Int]()
+        
+        FavoriteMovie.all().forEach({ ids.append(Int($0.id)) })
+        
+        if ids.contains(movie.id) {
+            FavoriteMovie.all().forEach { (favoritedMovie) in
+                if Int(favoritedMovie.id) == movie.id {
+                    favoritedMovie.destroy()
+                }
+            }
+        } else {
+            let newFavoritedMovie = FavoriteMovie(context: FavoriteMovie.context)
+            newFavoritedMovie.id = Int32(movie.id)
+            newFavoritedMovie.overview = movie.overview
+            newFavoritedMovie.posterPath = movie.posterPath
+            newFavoritedMovie.title = movie.title
+            newFavoritedMovie.save()
+        }
     }
 }

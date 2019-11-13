@@ -15,15 +15,13 @@ class FavoriteViewModel: CollectionViewModeling {
         
     var numberOfItems: Int = 0
     
-    var data: [Any] = [] {
+    var data: [Any] = FavoriteMovie.all() {
         didSet {
             numberOfItems = data.count
         }
     }
     
     var reloadData: (() -> Void)?
-    
-    init() { }
     
     func getData() {
         data = FavoriteMovie.all()
@@ -36,15 +34,19 @@ class FavoriteViewModel: CollectionViewModeling {
     func dequeueCellTo(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(of: MovieCell.self, forIndexPath: indexPath)
         
-        if let movie = data[indexPath.row] as? Movie {
-            cell.viewModel = MovieCellViewModel(movie: movie)
-        }
+        guard let favoritedMovie = data[indexPath.row] as? FavoriteMovie else { fatalError("puts nao foi") }
+        let movie = Movie(id: Int(favoritedMovie.id),
+                          title: favoritedMovie.title ?? "",
+                          overview: favoritedMovie.overview ?? "",
+                          posterPath: favoritedMovie.posterPath)
+        
+        cell.viewModel = MovieCellViewModel(movie: movie)
         
         return cell
     }
     
     func getItemSizeTo(collectionView: UICollectionView) -> CGSize {
-        return CGSize(width: collectionView.frame.width/4.4, height: 320)
+        return CGSize(width: collectionView.frame.width/4, height: 100)
     }
     
     func didSelectItemAt(indexPath: IndexPath) {

@@ -8,17 +8,17 @@
 
 import UIKit
 
-class MovieCellViewModel {
-    let defaults = UserDefaults.standard
-        
-    var needReload: (() -> Void)?
-    
+class MovieCellViewModel {            
     var posterPath: String?
     var title: String
     
     init(movie: Movie) {
         self.posterPath = movie.posterPath
         self.title = movie.title
+    }
+    
+    func saveStageOf(button: UIButton) {
+        print("colocar o user defaults")
     }
 }
 

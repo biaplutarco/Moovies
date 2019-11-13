@@ -8,10 +8,7 @@
 
 import UIKit
 
-class MovieCell: UICollectionViewCell {
-    
-    let defaults = UserDefaults.standard
-    
+class MovieCell: UICollectionViewCell {    
     var viewModel: MovieCellViewModel! {
         didSet {
             titleLabel.text = viewModel.title
@@ -47,7 +44,7 @@ class MovieCell: UICollectionViewCell {
     }()
     
     @objc func favorite(_ sender: UIButton) {
-        sender.isSelected.toggle()
+        viewModel.saveStageOf(button: sender)
     }
 }
 
