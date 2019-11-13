@@ -9,7 +9,8 @@
 import UIKit
 
 protocol CollectionViewModeling {
-    var title: String { get set } 
+    var title: String { get set }
+    var coordinator: AplicationCoordinator { get set }
     var numberOfItems: Int { get set }
     var data: [Any] { get set }
     var reloadData: (() -> Void)? { get set }
@@ -17,7 +18,6 @@ protocol CollectionViewModeling {
     func getData()
     func registerCellTo(collectionView: UICollectionView)
     func dequeueCellTo(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell
-    func getCellViewModelTo(indexPath: IndexPath)
-    func getItemSizeTo(collectionView: UICollectionView)
+    func getItemSizeTo(collectionView: UICollectionView) -> CGSize 
     func didSelectItemAt(indexPath: IndexPath)
 }

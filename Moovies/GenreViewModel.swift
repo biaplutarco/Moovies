@@ -9,6 +9,7 @@
 import UIKit
 
 class GenreViewModel: CollectionViewModeling {
+    var coordinator: AplicationCoordinator = AplicationCoordinator(navigationController: UINavigationController())
     
     var title: String = "Gêneros"
     
@@ -50,6 +51,9 @@ class GenreViewModel: CollectionViewModeling {
     }
     
     func didSelectItemAt(indexPath: IndexPath) {
-        
+        if let genre = data[indexPath.row] as? Genre {
+            coordinator.data = genre
+            coordinator.didSelectedItem()
+        }
     }
 }
