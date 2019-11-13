@@ -18,6 +18,3 @@ class GenreCellViewModel {
     }
 }
 
-extension GenreCellViewModel: CellViewModeling {
-    
-}

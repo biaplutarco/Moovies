@@ -35,13 +35,6 @@ class MovieCell: UICollectionViewCell {
         button.setImage(#imageLiteral(resourceName: "star"), for: .normal)
         button.setImage(#imageLiteral(resourceName: "starFill"), for: .selected)
         button.addTarget(self, action: #selector(favorite(_:)), for: .touchUpInside)
-        
-        if viewModel.isFavoriteMovie() == true {
-            button.isSelected = true
-        } else {
-            button.isSelected = false
-        }
-        
         return button
     }()
     
@@ -55,12 +48,6 @@ class MovieCell: UICollectionViewCell {
     
     @objc func favorite(_ sender: UIButton) {
         sender.isSelected.toggle()
-        
-        if sender.isSelected == true {
-            viewModel.setFavoriteMovie(true)
-        } else {
-            viewModel.setFavoriteMovie(false)
-        }
     }
 }
 
