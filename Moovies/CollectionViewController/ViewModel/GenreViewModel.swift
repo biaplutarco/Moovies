@@ -9,7 +9,7 @@
 import UIKit
 
 class GenreViewModel: CollectionViewModeling {
-    var coordinator: AplicationCoordinator = AplicationCoordinator(navigationController: UINavigationController())
+    var coordinator: AplicationCoordinator
     
     var title: String = "Gêneros"
     
@@ -22,6 +22,10 @@ class GenreViewModel: CollectionViewModeling {
     }
     
     var reloadData: (() -> Void)?
+    
+    init(coordinator: AplicationCoordinator) {
+        self.coordinator = coordinator
+    }
     
     func getData() {
         let url = APIManager.shared.getURLGenres()
@@ -52,8 +56,7 @@ class GenreViewModel: CollectionViewModeling {
     
     func didSelectItemAt(indexPath: IndexPath) {
         if let genre = data[indexPath.row] as? Genre {
-            coordinator.data = genre
-            coordinator.didSelectedItem()
+            coordinator.didSelected(genre: genre)
         }
     }
 }

@@ -11,7 +11,7 @@ import UIKit
 class MovieViewModel: CollectionViewModeling {
     var title: String
     
-    var coordinator: AplicationCoordinator = AplicationCoordinator(navigationController: UINavigationController())
+    var coordinator: AplicationCoordinator
     
     var numberOfItems: Int = 0
     
@@ -25,7 +25,8 @@ class MovieViewModel: CollectionViewModeling {
     
     private var genreID: Int
     
-    init(genre: Genre) {
+    init(genre: Genre, coordinator: AplicationCoordinator) {
+        self.coordinator = coordinator
         self.title = genre.name
         self.genreID = genre.id
     }
@@ -45,12 +46,16 @@ class MovieViewModel: CollectionViewModeling {
     
     func dequeueCellTo(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(of: MovieCell.self, forIndexPath: indexPath)
-        cell.viewModel = MovieCellViewModel()
+        
+        if let movie = data[indexPath.row] as? Movie {
+            cell.viewModel = MovieCellViewModel(movie: movie)
+        }
+        
         return cell
     }
     
     func getItemSizeTo(collectionView: UICollectionView) -> CGSize {
-        return CGSize(width: collectionView.frame.width/1.6, height: 320)
+        return CGSize(width: collectionView.frame.width/2.2, height: 320)
 
     }
     
