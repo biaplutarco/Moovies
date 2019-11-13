@@ -12,8 +12,10 @@ class AplicationCoordinator: Coordinator {
     lazy var navigationController = UINavigationController(rootViewController: self.rootViewController)
     
     lazy var rootViewController: CollectionViewController = {
-        let genreViewModel = GenreViewModel(coordinator: self)
+        let genreViewModel = GenreViewModel()
+        genreViewModel.delegate = self
         let genreViewController = CollectionViewController(viewModel: genreViewModel)
+        genreViewController.delegate = self
         return genreViewController
     }()
 
@@ -25,10 +27,22 @@ class AplicationCoordinator: Coordinator {
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
-    
-    func didSelected(genre: Genre) {
-        let movieViewModel = MovieViewModel(genre: genre, coordinator: self)
+}
+
+extension AplicationCoordinator: CollectionViewModelDelegate {
+    func didSelectedGenre(_ genre: Genre) {
+        let movieViewModel = MovieViewModel(genre: genre)
+        movieViewModel.delegate = self
         let movieViewController = CollectionViewController(viewModel: movieViewModel)
+        movieViewController.delegate = self
         self.navigationController.pushViewController(movieViewController, animated: true)
+    }
+}
+
+extension AplicationCoordinator: CollectionViewControllerDelegate {
+    func didTappedFavorites() {
+        let favoriteViewModel = FavoriteViewModel()
+        let favoriteViewController = CollectionViewController(viewModel: favoriteViewModel)
+        self.navigationController.present(favoriteViewController, animated: true, completion: nil)
     }
 }

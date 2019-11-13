@@ -1,17 +1,17 @@
 //
-//  MovieViewModel.swift
+//  FavoriteViewModel.swift
 //  Moovies
 //
-//  Created by aluno on 12/11/19.
+//  Created by aluno on 13/11/19.
 //  Copyright © 2019 aluno. All rights reserved.
 //
 
 import UIKit
 
-class MovieViewModel: CollectionViewModeling {
+class FavoriteViewModel: CollectionViewModeling {
     var delegate: CollectionViewModelDelegate?
     
-    var title: String
+    var title: String = "Filmes Favoritos"
         
     var numberOfItems: Int = 0
     
@@ -23,20 +23,10 @@ class MovieViewModel: CollectionViewModeling {
     
     var reloadData: (() -> Void)?
     
-    private var genreID: Int
-    
-    init(genre: Genre) {
-        self.title = genre.name
-        self.genreID = genre.id
-    }
+    init() { }
     
     func getData() {
-        let url = APIManager.shared.getURLMoviesFromGenres("\(genreID)")
-        APIManager.shared.get(url: url, type: Result.self) { [weak self] result in
-            guard let result = result else { return }
-            self?.data.append(contentsOf: result.movies)
-            self?.reloadData?()
-        }
+        data = FavoriteMovie.all()
     }
     
     func registerCellTo(collectionView: UICollectionView) {
@@ -54,11 +44,10 @@ class MovieViewModel: CollectionViewModeling {
     }
     
     func getItemSizeTo(collectionView: UICollectionView) -> CGSize {
-        return CGSize(width: collectionView.frame.width/2.2, height: 320)
-
+        return CGSize(width: collectionView.frame.width/4.4, height: 320)
     }
     
     func didSelectItemAt(indexPath: IndexPath) {
-//        salvar o filme favorito
+        
     }
 }

@@ -10,6 +10,7 @@ import UIKit
 
 class CollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     var viewModel: CollectionViewModeling
+    var delegate: CollectionViewControllerDelegate?
     
     init(viewModel: CollectionViewModeling) {
         self.viewModel = viewModel
@@ -22,6 +23,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     }
     
     func setupView() {
+        setupNavigationBar()
         title = viewModel.title
         viewModel.registerCellTo(collectionView: collectionView)
 
@@ -31,6 +33,18 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
                 self.collectionView.reloadData()
             }
         }
+    }
+    
+    private func setupNavigationBar() {
+        navigationController?.navigationBar.backgroundColor = .yellow
+        navigationController?.navigationBar.tintColor = .action
+        navigationController?.navigationBar.standardAppearance.titleTextAttributes = [.foregroundColor: UIColor.yellow]
+        let button = UIBarButtonItem(title: "Favorite", style: .plain, target: self ,action: #selector(favoriteTapped))
+        navigationItem.rightBarButtonItem = button
+    }
+    
+    @objc func favoriteTapped() {
+        delegate?.didTappedFavorites()
     }
     
     // MARK: UICollectionViewDataSource
@@ -55,3 +69,5 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         return viewModel.getItemSizeTo(collectionView: collectionView)
     }
 }
+
+

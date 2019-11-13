@@ -95,8 +95,5 @@ extension MovieCell: ViewCoding {
     
     func setupAdditionalConfiguration() {
         backgroundColor = .clear
-//        layer.borderColor = UIColor.darkGray.cgColor
-//        layer.cornerRadius = 10
-//        layer.borderWidth = 0.5
     }
 }
