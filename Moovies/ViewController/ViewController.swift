@@ -13,7 +13,7 @@ enum ControllerViewModelingType {
 
 import UIKit
 
-class CollectionViewController: UIViewController {
+class ViewController: UIViewController {
     
     var viewModelType: ControllerViewModelingType
     
@@ -65,12 +65,12 @@ class CollectionViewController: UIViewController {
     
     @objc func favoriteTapped() {
         let favoriteViewModel = FavoriteControllerViewModel()
-        let movieViewController = CollectionViewController(viewModel: favoriteViewModel, OfType: .movie)
+        let movieViewController = ViewController(viewModel: favoriteViewModel, OfType: .movie)
         navigationController?.present(movieViewController, animated: true, completion: nil)
     }
 }
 
-extension CollectionViewController: ViewCoding {
+extension ViewController: ViewCoding {
     func buildViewHierarchy() {
         view.addSubview(moviesCollectionView)
     }
@@ -98,7 +98,7 @@ extension CollectionViewController: ViewCoding {
     }
 }
 
-extension CollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.getNumberOfItems()
     }
@@ -131,7 +131,7 @@ extension CollectionViewController: UICollectionViewDelegate, UICollectionViewDa
             let genre = viewModel.didSelectItemAt(indexPath: indexPath)
             let movieViewModel = MoviesControllerViewModel(genre: genre)
             
-            let movieViewController = CollectionViewController(viewModel: movieViewModel, OfType: .movie)
+            let movieViewController = ViewController(viewModel: movieViewModel, OfType: .movie)
             navigationController?.pushViewController(movieViewController, animated: true)
         case .movie:
             print("did selext item ate \(indexPath.row)")

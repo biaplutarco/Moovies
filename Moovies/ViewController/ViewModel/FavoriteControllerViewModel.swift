@@ -29,7 +29,7 @@ extension FavoriteControllerViewModel: ControllerViewModeling {
     func getCellViewModelTo(indexPath: IndexPath) -> CellViewModeling {
         let favoriteMovie = favoriteMovies[indexPath.row]
         guard let title = favoriteMovie.title, let overview = favoriteMovie.overview else {
-            fatalError("can't get movie from coredata")
+            return MovieCellViewModel()
         }
         
         let movie = Movie(id: Int(favoriteMovie.id), title: title,

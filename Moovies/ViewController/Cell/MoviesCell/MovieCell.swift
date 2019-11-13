@@ -8,11 +8,6 @@
 
 import UIKit
 
-enum Favorite: String {
-    case favorite = "star"
-    case unfavorite = "starFill"
-}
-
 class MovieCell: UICollectionViewCell {
     
     let defaults = UserDefaults.standard
@@ -66,10 +61,6 @@ class MovieCell: UICollectionViewCell {
         } else {
             viewModel.setFavoriteMovie(false)
         }
-    }
-    
-    func isFavoreMovie() {
-        
     }
 }
 

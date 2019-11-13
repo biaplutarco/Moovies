@@ -45,6 +45,5 @@ extension MoviesControllerViewModel: ControllerViewModeling {
     
     func getNumberOfItems() -> Int {
         return movies.count
-
     }
 }

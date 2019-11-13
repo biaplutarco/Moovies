@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let genreViewModel = GenresControllerViewModel()
-        let viewController = CollectionViewController(viewModel: genreViewModel, OfType: .genre)
+        let viewController = ViewController(viewModel: genreViewModel, OfType: .genre)
         let navigationController = UINavigationController(rootViewController: viewController)
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
