@@ -18,6 +18,6 @@ extension UIColor {
     }
     
     open class var text: UIColor {
-        return UIColor.init(named: "text") ?? UIColor.black
+        return UIColor.systemBlue
     }
 }

@@ -16,6 +16,12 @@ class MovieCell: UICollectionViewCell {
             setupView()
         }
     }
+    
+    override var isSelected: Bool {
+        didSet {
+//            viewModel.getStateOf(button: favoriteButton)
+        }
+    }
         
     lazy var posterImageView: UIImageView = {
         let imageView = UIImageView()
@@ -31,7 +37,6 @@ class MovieCell: UICollectionViewCell {
         button.imageView?.tintColor = .action
         button.setImage(#imageLiteral(resourceName: "star"), for: .normal)
         button.setImage(#imageLiteral(resourceName: "starFill"), for: .selected)
-        button.addTarget(self, action: #selector(favorite(_:)), for: .touchUpInside)
         button.isSelected = viewModel.getStateOf(button: button)
         return button
     }()
@@ -43,10 +48,6 @@ class MovieCell: UICollectionViewCell {
         label.numberOfLines = 2
         return label
     }()
-    
-    @objc func favorite(_ sender: UIButton) {
-        viewModel.changeStateOf(button: sender)
-    }
 }
 
 extension MovieCell: ViewCoding {

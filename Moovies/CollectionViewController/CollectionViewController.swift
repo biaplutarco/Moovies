@@ -40,7 +40,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         navigationController?.navigationBar.backgroundColor = .yellow
         navigationController?.navigationBar.tintColor = .action
         navigationController?.navigationBar.standardAppearance.titleTextAttributes = [.foregroundColor: UIColor.yellow]
-        let button = UIBarButtonItem(title: "Favorite", style: .plain, target: self ,action: #selector(favoriteTapped))
+        let button = UIBarButtonItem(title: "Favorito", style: .plain, target: self ,action: #selector(favoriteTapped))
         navigationItem.rightBarButtonItem = button
     }
     

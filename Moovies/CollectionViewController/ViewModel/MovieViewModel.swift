@@ -59,7 +59,8 @@ class MovieViewModel: CollectionViewModeling {
     }
     
     func didSelect(collectionView: UICollectionView, itemAt indexPath: IndexPath) {
-        guard let movie = data[indexPath.row] as? Movie else { return }
+        guard let movie = data[indexPath.row] as? Movie,
+            let cell = collectionView.cellForItem(at: indexPath) as? MovieCell else { return }
         
         var ids = [Int]()
         
@@ -69,6 +70,7 @@ class MovieViewModel: CollectionViewModeling {
             FavoriteMovie.all().forEach { (favoritedMovie) in
                 if Int(favoritedMovie.id) == movie.id {
                     favoritedMovie.destroy()
+                    cell.viewModel.changeStateOf(button: cell.favoriteButton, to: false)
                 }
             }
         } else {
@@ -78,6 +80,7 @@ class MovieViewModel: CollectionViewModeling {
             newFavoritedMovie.posterPath = movie.posterPath
             newFavoritedMovie.title = movie.title
             newFavoritedMovie.save()
+            cell.viewModel.changeStateOf(button: cell.favoriteButton, to: true)
         }
     }
 }

@@ -50,14 +50,17 @@ class FavoriteViewModel: CollectionViewModeling {
     }
     
     func didSelect(collectionView: UICollectionView, itemAt indexPath: IndexPath) {
-        guard let movie = data[indexPath.row] as? FavoriteMovie else { return }
+        guard let movie = data[indexPath.row] as? FavoriteMovie,
+            let cell = collectionView.cellForItem(at: indexPath) as? MovieCell else { return }
         
         FavoriteMovie.all().forEach { (favoritedMovie) in
             if favoritedMovie == movie {
                 favoritedMovie.destroy()
                 collectionView.reloadData()
+                cell.viewModel.changeStateOf(button: cell.favoriteButton, to: false)
             }
         }
         
+        cell.isSelected = true
     }
 }

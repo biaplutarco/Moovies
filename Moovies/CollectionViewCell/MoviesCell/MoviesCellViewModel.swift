@@ -19,8 +19,8 @@ class MovieCellViewModel {
         self.title = movie.title
     }
     
-    func changeStateOf(button: UIButton) {
-        button.isSelected.toggle()
+    func changeStateOf(button: UIButton, to selected: Bool) {
+        button.isSelected = selected
         
         if button.isSelected == true {
             userDefaults.set(true, forKey: title)
