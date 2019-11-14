@@ -46,10 +46,18 @@ class FavoriteViewModel: CollectionViewModeling {
     }
     
     func getItemSizeTo(collectionView: UICollectionView) -> CGSize {
-        return CGSize(width: collectionView.frame.width/4, height: 100)
+        return CGSize(width: collectionView.frame.width/4, height: 200)
     }
     
-    func didSelectItemAt(indexPath: IndexPath) {
+    func didSelect(collectionView: UICollectionView, itemAt indexPath: IndexPath) {
+        guard let movie = data[indexPath.row] as? FavoriteMovie else { return }
+        
+        FavoriteMovie.all().forEach { (favoritedMovie) in
+            if favoritedMovie == movie {
+                favoritedMovie.destroy()
+                collectionView.reloadData()
+            }
+        }
         
     }
 }

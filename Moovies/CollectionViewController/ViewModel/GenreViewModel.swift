@@ -52,7 +52,7 @@ class GenreViewModel: CollectionViewModeling {
         return CGSize(width: collectionView.frame.size.width, height: 50)
     }
     
-    func didSelectItemAt(indexPath: IndexPath) {
+    func didSelect(collectionView: UICollectionView, itemAt indexPath: IndexPath) {
         if let genre = data[indexPath.row] as? Genre {
             delegate?.didSelectedGenre(genre)
         }

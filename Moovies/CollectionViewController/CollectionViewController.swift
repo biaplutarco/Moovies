@@ -25,6 +25,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     func setupView() {
         setupNavigationBar()
         title = viewModel.title
+        collectionView.backgroundColor = .white
         viewModel.registerCellTo(collectionView: collectionView)
 
         viewModel.getData()
@@ -62,7 +63,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     // MARK: UICollectionViewDelegate
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.didSelectItemAt(indexPath: indexPath)
+        viewModel.didSelect(collectionView: collectionView, itemAt: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

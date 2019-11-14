@@ -19,5 +19,5 @@ protocol CollectionViewModeling {
     func registerCellTo(collectionView: UICollectionView)
     func dequeueCellTo(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell
     func getItemSizeTo(collectionView: UICollectionView) -> CGSize 
-    func didSelectItemAt(indexPath: IndexPath)
+    func didSelect(collectionView: UICollectionView, itemAt indexPath: IndexPath)
 }

@@ -58,7 +58,7 @@ class MovieViewModel: CollectionViewModeling {
 
     }
     
-    func didSelectItemAt(indexPath: IndexPath) {
+    func didSelect(collectionView: UICollectionView, itemAt indexPath: IndexPath) {
         guard let movie = data[indexPath.row] as? Movie else { return }
         
         var ids = [Int]()

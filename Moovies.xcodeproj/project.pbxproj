@@ -179,7 +179,7 @@
 				5787D9852373A64800FC01F2 /* Extension */,
 				5787D98C2373BBC900FC01F2 /* Protocol */,
 				5762EC9E237C7035001B741A /* CollectionViewController */,
-				5787D9A02375C29600FC01F2 /* Cell */,
+				5787D9A02375C29600FC01F2 /* CollectionViewCell */,
 				5787D945237367CF00FC01F2 /* Assets.xcassets */,
 				5787D947237367CF00FC01F2 /* LaunchScreen.storyboard */,
 				57DFC4FF23761453003698D0 /* Moovies.xcdatamodeld */,
@@ -274,13 +274,13 @@
 			path = GenreCell;
 			sourceTree = "<group>";
 		};
-		5787D9A02375C29600FC01F2 /* Cell */ = {
+		5787D9A02375C29600FC01F2 /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				5787D9992375072100FC01F2 /* GenreCell */,
 				5787D9882373A97B00FC01F2 /* MoviesCell */,
 			);
-			path = Cell;
+			path = CollectionViewCell;
 			sourceTree = "<group>";
 		};
 		57DFC51023761905003698D0 /* CoreData */ = {

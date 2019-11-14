@@ -16,11 +16,11 @@ class MovieCell: UICollectionViewCell {
             setupView()
         }
     }
-    
+        
     lazy var posterImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.getImageFrom(path: nil)
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = 12
         imageView.layer.masksToBounds = true
         return imageView
@@ -32,6 +32,7 @@ class MovieCell: UICollectionViewCell {
         button.setImage(#imageLiteral(resourceName: "star"), for: .normal)
         button.setImage(#imageLiteral(resourceName: "starFill"), for: .selected)
         button.addTarget(self, action: #selector(favorite(_:)), for: .touchUpInside)
+        button.isSelected = viewModel.getStateOf(button: button)
         return button
     }()
     
@@ -44,7 +45,7 @@ class MovieCell: UICollectionViewCell {
     }()
     
     @objc func favorite(_ sender: UIButton) {
-        viewModel.saveStageOf(button: sender)
+        viewModel.changeStateOf(button: sender)
     }
 }
 
@@ -70,7 +71,7 @@ extension MovieCell: ViewCoding {
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
             titleLabel.trailingAnchor.constraint(equalTo: favoriteButton.leadingAnchor, constant: -8),
             
-            posterImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.8),
+            posterImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
             posterImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
             posterImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
             posterImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8)
