@@ -8,9 +8,6 @@
 
 import UIKit
 
-    //  Fazer:
-    //  Tratar o caso de não conseguir pegar os dados da API
-
 class GenreViewModel: CollectionViewModeling {
     var delegate: CollectionViewModelDelegate?
         

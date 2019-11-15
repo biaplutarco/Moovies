@@ -17,7 +17,11 @@ extension UIColor {
         return UIColor.init(named: "action") ?? UIColor.black
     }
     
+    open class var selected: UIColor {
+        return UIColor.init(named: "selected") ?? UIColor.black
+    }
+    
     open class var text: UIColor {
-        return UIColor.systemBlue
+        return UIColor.black
     }
 }
