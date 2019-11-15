@@ -25,8 +25,9 @@ extension UIImageView {
                             self?.image = image
                         }
                     }
+                } else {
+                    self?.image = #imageLiteral(resourceName: "noImage")
                 }
-                // colocar o placeholder aqui
             }
             
         } else {
