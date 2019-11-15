@@ -60,12 +60,16 @@ class MovieViewModel: CollectionViewModeling {
     }
     
     func getData() {
-        let url = APIManager.shared.getURLMoviesFromGenres("\(genreID)")
-        APIManager.shared.get(url: url, type: Movies.self) { [weak self] result in
-            guard let result = result else { return }
-            self?.data.append(contentsOf: result.movies)
-            self?.reloadData?()
-        }
+//        let url = APIManager.shared.getURLMoviesFromGenres("\(genreID)")
+//        APIManager.shared.get(url: url, type: Movies.self) { [weak self] result in
+//            guard let result = result else { return }
+//            self?.data.append(contentsOf: result.movies)
+//            self?.reloadData?()
+//        }
+        
+        let movies = APIManager.shared.getMoviesFromGenre(id: genreID)
+        self.data.append(contentsOf: movies)
+        self.reloadData?()
     }
     
     func registerCellTo(collectionView: UICollectionView) {

@@ -31,13 +31,17 @@ class GenreViewModel: CollectionViewModeling {
     }
     
     func getData() {
-        let url = APIManager.shared.getURLGenres()
-        APIManager.shared.get(url: url, type: Genres.self) { [weak self] result in
-            //Lembrar de fazer o Empty state, caso de ruim pegar
-            guard let result = result else { return }
-            self?.data.append(contentsOf: result.genres)
-            self?.reloadData?()
-        }
+//        let url = APIManager.shared.getURLGenres()
+//        APIManager.shared.get(url: url, type: Genres.self) { [weak self] result in
+//            //Lembrar de fazer o Empty state, caso de ruim pegar
+//            guard let result = result else { return }
+//            self?.data.append(contentsOf: result.genres)
+//            self?.reloadData?()
+//        }
+        
+        let genres = APIManager.shared.getGenres()
+        self.data.append(contentsOf: genres)
+        self.reloadData?()
     }
     
     func registerCellTo(collectionView: UICollectionView) {

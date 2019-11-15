@@ -17,7 +17,7 @@ class APIManager: NSObject {
     //  ohttp stamps - testar a requisição
     
     private let totalPages = 1
-    private let baseURL = "https://api.themoviedb.org/3"
+    private let baseURL = "https://api.themoviedb.org/3/genre/movie/list?api_key=aa1f9a8cb654fe5383704dd771b128f0&language=pt-BR"
     private let key = "api_key=aa1f9a8cb654fe5383704dd771b128f0"
     private let getDicoverMovies = "/discover/movie?"
     private let getGenresEndPoint = "/genre/movie/list?"
@@ -33,21 +33,45 @@ class APIManager: NSObject {
         return url
     }
     
-    func getURLGenres() -> URL {
-        let rawURL = "\(baseURL)\(getGenresEndPoint)\(key)\(getInPTBR)"
-        guard let url = URL(string: rawURL) else { fatalError("can't get the request") }
+//    func getURLGenres() -> URL {
+//        let rawURL = "\(baseURL)\(getGenresEndPoint)\(key)\(getInPTBR)"
+//        guard let url = URL(string: rawURL) else { fatalError("can't get the request") }
+//
+//        return url
+//    }
+    
+    func getMoviesFromGenre(id: Int) -> [Movie] {
+        let moviesEnum: MoviesRequest = .get(genreID: id)
+        var movies = [Movie]()
         
-        return url
+        get(request: moviesEnum.request, type: Movies.self) { result in
+            guard let result = result else { return }
+            movies.append(contentsOf: result.movies)
+        }
+        
+        return movies
     }
     
-    func get<T: Codable>(url: URL, type: T.Type, completion: @escaping (T?) -> Void) {
-        var getRequest = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 30)
-        getRequest.httpMethod = "GET"
+    func getGenres() -> [Genre] {
+        let genreRequest: GenreRequest = .all
+        var genres = [Genre]()
         
-        let getTask = URLSession.shared.dataTask(with: getRequest) { (data, response, error) in
+        get(request: genreRequest.request, type: Genres.self) { result in
+            guard let result = result else { return }
+            genres.append(contentsOf: result.genres)
+        }
+        
+        return genres
+    }
+    
+     func get<T: Codable>(request: URLRequest, type: T.Type, completion: @escaping (T?) -> Void) {
+//        var getRequest = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 30)
+//        getRequest.httpMethod = "GET"
+        
+        let getTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
             
             if error != nil {
-                print("GET Request in \(getRequest)")
+                print("GET Request in \(request)")
                 print("Error: \(error!)")
             }
             
@@ -59,11 +83,11 @@ class APIManager: NSObject {
                 } catch let parserError {
                     DispatchQueue.main.async {
                         print(parserError)
-                        print("Unable to parse JSON response in \(getRequest)")
+                        print("Unable to parse JSON response in \(request)")
                     }
                 }
             } else {
-                print ("Received empty quest response from \(getRequest)")
+                print ("Received empty quest response from \(request)")
             }
         }
         
