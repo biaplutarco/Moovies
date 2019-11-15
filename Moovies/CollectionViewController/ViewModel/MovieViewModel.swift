@@ -84,7 +84,6 @@ class MovieViewModel: CollectionViewModeling {
     
     func getItemSizeTo(collectionView: UICollectionView) -> CGSize {
         return CGSize(width: collectionView.frame.width/2.2, height: 320)
-
     }
     
     func didSelect(collectionView: UICollectionView, itemAt indexPath: IndexPath) {
