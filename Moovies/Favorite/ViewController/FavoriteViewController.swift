@@ -17,7 +17,6 @@ class FavoriteViewController: UIViewController {
         return favoriteView
     }()
     
-    
     init(viewModel: FavoriteControllerViewModel, delegate: CollectionViewControllerDelegate? = nil) {
         self.viewModel = viewModel
         self.delegate = delegate
@@ -31,12 +30,6 @@ class FavoriteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    private func setupNavigationBar() {
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.tintColor = .action
-        navigationController?.navigationBar.standardAppearance.titleTextAttributes = [.foregroundColor: UIColor.yellow]
     }
 }
 
