@@ -29,6 +29,13 @@ class FavoriteView: UIView {
         return button
     }()
     
+    lazy var emptyLabel: UILabel = {
+       let label = UILabel()
+        label.text = viewModel.isEmptyMessage
+        label.textAlignment = .center
+        label.numberOfLines = 2
+        return label
+    }()
 
     init(viewModel: FavoriteViewModel, delegate: CollectionViewControllerDelegate? = nil) {
         self.viewModel = viewModel
@@ -40,31 +47,42 @@ class FavoriteView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private func getEmptyFeedback() {
+        emptyLabel.isHidden = !viewModel.isEmpty
+    }
 }
 
 extension FavoriteView: ViewCoding {
     func buildViewHierarchy() {
         addSubview(collectionView)
         addSubview(searchButton)
+        addSubview(emptyLabel)
     }
     
     func setupConstraints() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         searchButton.translatesAutoresizingMaskIntoConstraints = false
+        emptyLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 12),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            collectionView.bottomAnchor.constraint(equalTo: searchButton.topAnchor, constant: -12),
             
-            searchButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 48),
             searchButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
-            searchButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 12)
+            searchButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -12),
+            
+            emptyLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            emptyLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            emptyLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
     
     func setupAdditionalConfiguration() {
         backgroundColor = .clear
+        getEmptyFeedback()
     }
 }
 

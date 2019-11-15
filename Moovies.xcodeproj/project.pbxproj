@@ -193,8 +193,8 @@
 			isa = PBXGroup;
 			children = (
 				5762ECB6237F5B00001B741A /* FavoriteViewController.swift */,
-				5762ECB8237F5FF0001B741A /* FavoriteView.swift */,
 				5762ECBA237F616D001B741A /* FavoriteControllerViewModel.swift */,
+				5762ECB8237F5FF0001B741A /* FavoriteView.swift */,
 				5762ECA0237C7195001B741A /* FavoriteViewModel.swift */,
 			);
 			path = Favorite;

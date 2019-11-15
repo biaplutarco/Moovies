@@ -17,12 +17,17 @@ class FavoriteViewModel: CollectionViewModeling {
     var title: String = "Filmes Favoritos"
     
     var buttonTitle: String = "Buscar filmes"
+    
+    var isEmptyMessage: String = "Você não tem filmes favoritados ainda. Adicione algum!"
         
     var numberOfItems: Int = 0
+    
+    var isEmpty: Bool = true
     
     var data: [Any] = FavoriteMovie.all() {
         didSet {
             numberOfItems = data.count
+            isEmpty = data.isEmpty
         }
     }
     
