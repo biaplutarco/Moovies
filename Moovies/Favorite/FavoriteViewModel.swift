@@ -15,6 +15,8 @@ class FavoriteViewModel: CollectionViewModeling {
     var delegate: CollectionViewModelDelegate?
     
     var title: String = "Filmes Favoritos"
+    
+    var buttonTitle: String = "Buscar filmes"
         
     var numberOfItems: Int = 0
     

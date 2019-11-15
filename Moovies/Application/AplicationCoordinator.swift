@@ -11,9 +11,9 @@ import UIKit
 class AplicationCoordinator: Coordinator {
     lazy var navigationController = UINavigationController(rootViewController: self.rootViewController)
     
-    lazy var rootViewController: CollectionViewController = {
-        let viewModel = GenreViewModel(delegate: self)
-        let genreViewController = CollectionViewController(viewModel: viewModel, delegate: self)
+    lazy var rootViewController: FavoriteViewController = {
+        let viewModel = FavoriteControllerViewModel()
+        let genreViewController = FavoriteViewController(viewModel: viewModel, delegate: self)
         return genreViewController
     }()
 
