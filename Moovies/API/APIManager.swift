@@ -12,37 +12,15 @@ class APIManager: NSObject {
     static let shared = APIManager()
     
     //  Estudar para melhorias:
-    //  Enum pra rotas
     //  Usar urlcomponents
     //  ohttp stamps - testar a requisição
-    
-    private let totalPages = 1
-    private let baseURL = "https://api.themoviedb.org/3/genre/movie/list?api_key=aa1f9a8cb654fe5383704dd771b128f0&language=pt-BR"
-    private let key = "api_key=aa1f9a8cb654fe5383704dd771b128f0"
-    private let getDicoverMovies = "/discover/movie?"
-    private let getGenresEndPoint = "/genre/movie/list?"
-    private let sortByPopularity = "&sort_by=popularity.desc&include_adult=false&include_video=false&page=1"
-    private let getFromGenres = "&with_genres="
-    private let getInPTBR = "&language=pt-BR"
-    
-    func getURLMoviesFromGenres(_ genres: String) -> URL {
-        let fromGenres = "\(getFromGenres)\(genres)"
-        let rawURL = "\(baseURL)\(getDicoverMovies)\(key)\(getInPTBR)\(sortByPopularity)\(fromGenres)"
-        guard let url = URL(string: rawURL) else { fatalError("can't get the request") }
-        
-        return url
-    }
-    
-    func getMoviesFromGenre(id: Int) -> [Movie] {
+
+    func getMoviesFromGenre(id: Int, completion: @escaping (Movies?) -> Void) {
         let moviesEnum: MoviesRequest = .get(genreID: id)
-        var movies = [Movie]()
         
         get(request: moviesEnum.request, type: Movies.self) { result in
-            guard let result = result else { return }
-            movies.append(contentsOf: result.movies)
+            completion(result)
         }
-        
-        return movies
     }
     
     func getGenres(completion: @escaping (Genres?) -> Void) {
@@ -53,7 +31,7 @@ class APIManager: NSObject {
         }
     }
     
-     func get<T: Codable>(request: URLRequest, type: T.Type, completion: @escaping (T?) -> Void) {
+    private func get<T: Codable>(request: URLRequest, type: T.Type, completion: @escaping (T?) -> Void) {
         let getTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
             
             if error != nil {
