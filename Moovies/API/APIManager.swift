@@ -11,6 +11,11 @@ import UIKit
 class APIManager: NSObject {
     static let shared = APIManager()
     
+    //  Estudar para melhorias:
+    //  Enum pra rotas
+    //  Usar urlcomponents
+    //  ohttp stamps - testar a requisição
+    
     private let totalPages = 1
     private let baseURL = "https://api.themoviedb.org/3"
     private let key = "api_key=aa1f9a8cb654fe5383704dd771b128f0"

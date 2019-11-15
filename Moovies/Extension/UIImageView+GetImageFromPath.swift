@@ -8,9 +8,14 @@
 
 import UIKit
 
+    //  Fazer:
+    //  Colocar a url no enum das rotas
+    //  Ter uma imagem de placeholder pra caso não consiga fazer o download
+
 extension UIImageView {
     func getImageFrom(path: String?) {
         if let path = path {
+            //colocar isso no futuro enum de rotas da API
             let url = URL(string: "https://image.tmdb.org/t/p/w500\(path)")!
             
             DispatchQueue.global().async { [weak self] in
@@ -21,6 +26,7 @@ extension UIImageView {
                         }
                     }
                 }
+                // colocar o placeholder aqui
             }
             
         } else {

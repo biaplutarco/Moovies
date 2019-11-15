@@ -8,6 +8,9 @@
 
 import UIKit
 
+    //  Fazer:
+    //  Trata o error caso não seja um Favorite Movie ou pelo menos corrigir a mensagem do fatal error
+
 class FavoriteViewModel: CollectionViewModeling {
     var delegate: CollectionViewModelDelegate?
     

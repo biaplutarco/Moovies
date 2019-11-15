@@ -8,12 +8,15 @@
 
 import UIKit
 
+//  UICollectionViewController é legal evitar na maioria das vezes, devido a dificuldades na hora de realizar manutenção ou adicionar funcionalidades. Mas como é um teste, e eu não vou fazer manutenção do codigo no futuro, eu achei que seria legal usar ela!
+
 class CollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     var viewModel: CollectionViewModeling
     var delegate: CollectionViewControllerDelegate?
     
-    init(viewModel: CollectionViewModeling) {
+    init(viewModel: CollectionViewModeling, delegate: CollectionViewControllerDelegate? = nil) {
         self.viewModel = viewModel
+        self.delegate = delegate
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
         setupView()
     }

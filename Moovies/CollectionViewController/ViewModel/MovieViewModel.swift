@@ -8,6 +8,9 @@
 
 import UIKit
 
+    //  Fazer:
+    //  Tentar quebrar melhor a didSelect function, ta muito grande
+
 class MovieViewModel: CollectionViewModeling {
     var delegate: CollectionViewModelDelegate?
     
@@ -25,14 +28,15 @@ class MovieViewModel: CollectionViewModeling {
     
     private var genreID: Int
     
-    init(genre: Genre) {
+    init(genre: Genre, delegate: CollectionViewModelDelegate? = nil) {
         self.title = genre.name
         self.genreID = genre.id
+        self.delegate = delegate
     }
     
     func getData() {
         let url = APIManager.shared.getURLMoviesFromGenres("\(genreID)")
-        APIManager.shared.get(url: url, type: Result.self) { [weak self] result in
+        APIManager.shared.get(url: url, type: Movies.self) { [weak self] result in
             guard let result = result else { return }
             self?.data.append(contentsOf: result.movies)
             self?.reloadData?()
@@ -57,6 +61,11 @@ class MovieViewModel: CollectionViewModeling {
         return CGSize(width: collectionView.frame.width/2.2, height: 320)
 
     }
+    
+    //  O que essa função ta fazendo?
+    //  Fetch
+    //  Checagem de favoritos
+    //  Criação de Favorite Movie
     
     func didSelect(collectionView: UICollectionView, itemAt indexPath: IndexPath) {
         guard let movie = data[indexPath.row] as? Movie,

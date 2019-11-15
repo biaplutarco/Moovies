@@ -12,7 +12,7 @@ import CoreData
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    
+
     lazy var coordinator = AplicationCoordinator()
 
     var window: UIWindow?

@@ -8,6 +8,9 @@
 
 import UIKit
 
+    //  Fazer:
+    //  Tratar o caso de não conseguir pegar os dados da API
+
 class GenreViewModel: CollectionViewModeling {
     var delegate: CollectionViewModelDelegate?
         
@@ -23,11 +26,14 @@ class GenreViewModel: CollectionViewModeling {
     
     var reloadData: (() -> Void)?
     
-    init() { }
+    init(delegate: CollectionViewModelDelegate? = nil) {
+        self.delegate = delegate
+    }
     
     func getData() {
         let url = APIManager.shared.getURLGenres()
         APIManager.shared.get(url: url, type: Genres.self) { [weak self] result in
+            //Lembrar de fazer o Empty state, caso de ruim pegar
             guard let result = result else { return }
             self?.data.append(contentsOf: result.genres)
             self?.reloadData?()
