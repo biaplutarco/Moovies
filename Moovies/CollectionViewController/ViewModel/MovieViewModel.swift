@@ -9,7 +9,7 @@
 import UIKit
 
     //  Fazer:
-    //  Tentar quebrar melhor a didSelect function, ta muito grande
+    //  Tratar o caso de não conseguir pegar os dados da API
 
 class MovieViewModel: CollectionViewModeling {
     var delegate: CollectionViewModelDelegate?
@@ -32,6 +32,31 @@ class MovieViewModel: CollectionViewModeling {
         self.title = genre.name
         self.genreID = genre.id
         self.delegate = delegate
+    }
+    
+    private func createFavoriteMovie(from movie: Movie) {
+        let favoriteMovie = FavoriteMovie(context: FavoriteMovie.context)
+        favoriteMovie.id = Int32(movie.id)
+        favoriteMovie.overview = movie.overview
+        favoriteMovie.posterPath = movie.posterPath
+        favoriteMovie.title = movie.title
+        favoriteMovie.save()
+    }
+    
+    private func getFavoriteMovies() -> [FavoriteMovie] {
+        return FavoriteMovie.all()
+    }
+    
+    private func checkFavorite(movie: Movie) -> Bool {
+        let favoriteIds = getFavoriteMovies().map { (favoriteMovie) -> Int in
+            return Int(favoriteMovie.id)
+        }
+        
+        if favoriteIds.contains(movie.id) {
+            return true
+        } else {
+            return false
+        }
     }
     
     func getData() {
@@ -62,33 +87,19 @@ class MovieViewModel: CollectionViewModeling {
 
     }
     
-    //  O que essa função ta fazendo?
-    //  Fetch
-    //  Checagem de favoritos
-    //  Criação de Favorite Movie
-    
     func didSelect(collectionView: UICollectionView, itemAt indexPath: IndexPath) {
         guard let movie = data[indexPath.row] as? Movie,
             let cell = collectionView.cellForItem(at: indexPath) as? MovieCell else { return }
         
-        var ids = [Int]()
-        
-        FavoriteMovie.all().forEach({ ids.append(Int($0.id)) })
-        
-        if ids.contains(movie.id) {
-            FavoriteMovie.all().forEach { (favoritedMovie) in
-                if Int(favoritedMovie.id) == movie.id {
+        if checkFavorite(movie: movie) == true {
+            getFavoriteMovies().forEach { (favoritedMovie) in
+                if favoritedMovie.id == movie.id {
                     favoritedMovie.destroy()
                     cell.viewModel.changeStateOf(button: cell.favoriteButton, to: false)
                 }
             }
         } else {
-            let newFavoritedMovie = FavoriteMovie(context: FavoriteMovie.context)
-            newFavoritedMovie.id = Int32(movie.id)
-            newFavoritedMovie.overview = movie.overview
-            newFavoritedMovie.posterPath = movie.posterPath
-            newFavoritedMovie.title = movie.title
-            newFavoritedMovie.save()
+            createFavoriteMovie(from: movie)
             cell.viewModel.changeStateOf(button: cell.favoriteButton, to: true)
         }
     }
