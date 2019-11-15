@@ -33,13 +33,6 @@ class APIManager: NSObject {
         return url
     }
     
-//    func getURLGenres() -> URL {
-//        let rawURL = "\(baseURL)\(getGenresEndPoint)\(key)\(getInPTBR)"
-//        guard let url = URL(string: rawURL) else { fatalError("can't get the request") }
-//
-//        return url
-//    }
-    
     func getMoviesFromGenre(id: Int) -> [Movie] {
         let moviesEnum: MoviesRequest = .get(genreID: id)
         var movies = [Movie]()
@@ -52,22 +45,15 @@ class APIManager: NSObject {
         return movies
     }
     
-    func getGenres() -> [Genre] {
+    func getGenres(completion: @escaping (Genres?) -> Void) {
         let genreRequest: GenreRequest = .all
-        var genres = [Genre]()
         
         get(request: genreRequest.request, type: Genres.self) { result in
-            guard let result = result else { return }
-            genres.append(contentsOf: result.genres)
+            completion(result)
         }
-        
-        return genres
     }
     
      func get<T: Codable>(request: URLRequest, type: T.Type, completion: @escaping (T?) -> Void) {
-//        var getRequest = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 30)
-//        getRequest.httpMethod = "GET"
-        
         let getTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
             
             if error != nil {
