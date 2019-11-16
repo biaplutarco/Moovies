@@ -11,6 +11,8 @@ import UIKit
 class SearchMovieView: UIView {
     var viewModel: SearchMovieViewModel
     
+    weak var delegate: SearchMovieViewDelegate?
+    
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = viewModel.title
@@ -25,12 +27,19 @@ class SearchMovieView: UIView {
         return sectionView
     }()
     
+    lazy var movieSectionView: SectionView = {
+        let moviesViewModel = MoviesViewModel(genre: Genre(id: 0, name: ""))
+        let sectionView = createMovieSectionWith(viewModel: moviesViewModel)
+        return sectionView
+    }()
+    
     lazy var saveButton: UIButton = {
         let button = UIButton()
         button.setTitle(viewModel.buttonTitle, for: .normal)
         button.setTitleColor(.text, for: .normal)
         button.backgroundColor = .action
         button.layer.cornerRadius = 16
+        button.addTarget(self, action: #selector(didTappedSaveButton), for: .touchUpInside)
         return button
     }()
     
@@ -45,10 +54,11 @@ class SearchMovieView: UIView {
     }
     
     @objc func didTappedSaveButton() {
-        
+        viewModel.saveFavorites()
+        delegate?.didTappedSaveButton()
     }
     
-    private func createMovieSectionWith(viewModel: MoviesViewModel) {
+    private func createMovieSectionWith(viewModel: MoviesViewModel) -> SectionView {
         let movieSectionView = SectionView(viewModel: viewModel)
         addSubview(movieSectionView)
         
@@ -59,6 +69,8 @@ class SearchMovieView: UIView {
             movieSectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
             movieSectionView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -48)
         ])
+        
+        return movieSectionView
     }
 }
 
@@ -98,15 +110,15 @@ extension SearchMovieView: ViewCoding {
 
 extension SearchMovieView: SectionViewDelegate {
     func unFavoriteMovie(_ favoriteMovie: FavoriteMovie) {
-        viewModel.unFavoriteMovie(favoriteMovie)
+        viewModel.newUnFavoriteMovies.append(favoriteMovie)
     }
     
     func favoriteMovie(_ movie: Movie) {
-        viewModel.favoriteMovie(movie)
+        viewModel.newFavoriteMovies.append(movie)
     }
     
     func didSelectedGenre(_ genre: Genre) {
         let moviesViewModel = MoviesViewModel(genre: genre)
-        createMovieSectionWith(viewModel: moviesViewModel)
+        movieSectionView.viewModel = moviesViewModel
     }
 }

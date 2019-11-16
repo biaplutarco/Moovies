@@ -9,7 +9,16 @@
 import UIKit
 
 class SectionView: UIView {
-    var viewModel: SectionViewModeling
+    var viewModel: SectionViewModeling {
+        didSet {
+            viewModel.getData()
+            viewModel.reloadData = {
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            }
+        }
+    }
         
     lazy var titleLabel: UILabel = {
         let label = UILabel()

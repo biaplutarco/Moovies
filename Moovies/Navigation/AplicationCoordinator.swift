@@ -16,6 +16,11 @@ class AplicationCoordinator: Coordinator {
         let viewController = FavoriteViewController(viewModel: viewModel, title: "Filmes Favoritos")
         return viewController
     }()
+    
+    lazy var searchMovieViewController: SearchMovieViewController = {
+        let viewController = SearchMovieViewController()
+        return viewController
+    }()
 
     func start() {
         let window = UIApplication.shared.delegate?.window!
@@ -26,7 +31,14 @@ class AplicationCoordinator: Coordinator {
 
 extension AplicationCoordinator: FavoriteViewDelegate {
     func didTappedSearchButton() {
-        let viewController = SearchMovieViewController()
-        self.navigationController.present(viewController, animated: true, completion: nil)
+        self.navigationController.present(searchMovieViewController, animated: true, completion: nil)
+    }
+}
+
+extension AplicationCoordinator: SearchMovieViewDelegate {
+    func didTappedSaveButton() {
+        self.searchMovieViewController.dismiss(animated: true) {
+            self.rootViewController.favoriteView.collectionView.reloadData()
+        }
     }
 }

@@ -100,7 +100,7 @@ class MoviesViewModel: SectionViewModeling {
         } else {
 //            createFavoriteMovie(from: movie)
             delegate?.favoriteMovie(movie)
-            cell.viewModel.changeStateOf(button: cell.favoriteButton, to: true)
+            cell.viewModel.changeStateOf(button: cell.favoriteButton, to: false)
         }
     }
     

@@ -90,7 +90,9 @@ extension FavoriteView: ViewCoding {
         
         viewModel.getData()
         getEmptyFeedback()
-        collectionView.reloadData()
+        viewModel.reloadData = {
+            self.collectionView.reloadData()
+        }
     }
 }
 

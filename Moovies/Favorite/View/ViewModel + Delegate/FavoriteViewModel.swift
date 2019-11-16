@@ -37,6 +37,7 @@ class FavoriteViewModel: CollectionViewModeling {
     
     func getData() {
         data = FavoriteMovie.all()
+        reloadData?()
     }
     
     func registerCellTo(collectionView: UICollectionView) {

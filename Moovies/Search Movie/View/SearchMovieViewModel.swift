@@ -13,16 +13,29 @@ class SearchMovieViewModel {
     
     var buttonTitle: String = "Salvar nos favoritos"
     
-    func favoriteMovie(_ movie: Movie) {
-        let favoriteMovie = FavoriteMovie(context: FavoriteMovie.context)
-        favoriteMovie.id = Int32(movie.id)
-        favoriteMovie.overview = movie.overview
-        favoriteMovie.posterPath = movie.posterPath
-        favoriteMovie.title = movie.title
-        favoriteMovie.save()
+    var newFavoriteMovies: [Movie] = []
+    
+    var newUnFavoriteMovies: [FavoriteMovie] = []
+    
+    private func favoriteMovies() {
+        newFavoriteMovies.forEach { (movie) in
+            let favoriteMovie = FavoriteMovie(context: FavoriteMovie.context)
+            favoriteMovie.id = Int32(movie.id)
+            favoriteMovie.overview = movie.overview
+            favoriteMovie.posterPath = movie.posterPath
+            favoriteMovie.title = movie.title
+            favoriteMovie.save()
+        }
     }
     
-    func unFavoriteMovie(_ favoriteMovie: FavoriteMovie) {
-        favoriteMovie.destroy()
+    private func unFavoriteMovies() {
+        newUnFavoriteMovies.forEach { (favoriteMovie) in
+            favoriteMovie.destroy()
+        }
+    }
+    
+    func saveFavorites() {
+        unFavoriteMovies()
+        favoriteMovies()
     }
 }
