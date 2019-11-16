@@ -11,33 +11,33 @@ import UIKit
 class GenreCell: UICollectionViewCell {
     var viewModel: GenreCellViewModel! {
         didSet {
-            genreLabel.text = viewModel.name
+            genreButton.setTitle(viewModel.name, for: .normal)
             setupView()
         }
     }
     
-    lazy var genreLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .text
-        label.text = "loading"
-        return label
+    lazy var genreButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("loading", for: .normal)
+        button.backgroundColor = .action
+        button.layer.cornerRadius = 20
+        return button
     }()
-
 }
 
 extension GenreCell: ViewCoding {
     func buildViewHierarchy() {
-        addSubview(genreLabel)
+        addSubview(genreButton)
     }
     
     func setupConstraints() {
-        genreLabel.translatesAutoresizingMaskIntoConstraints = false
+        genreButton.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            genreLabel.topAnchor.constraint(equalTo: topAnchor),
-            genreLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            genreLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            genreLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
+            genreButton.topAnchor.constraint(equalTo: topAnchor),
+            genreButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            genreButton.centerYAnchor.constraint(equalTo: centerYAnchor),
+            genreButton.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
     

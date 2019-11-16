@@ -13,6 +13,7 @@ class GenresView: UIView {
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
+        label.text = viewModel.title
         return label
     }()
     
@@ -45,16 +46,27 @@ extension GenresView: ViewCoding {
     func setupConstraints() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: topAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            titleLabel.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: -12),
+            
+            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+        ])
     }
     
     func setupAdditionalConfiguration() {
-        
+        backgroundColor = .clear
     }
-    
-    
 }
 
-extension GenresView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension GenresView: UICollectionViewDelegate, UICollectionViewDataSource,
+UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.numberOfItems
     }
