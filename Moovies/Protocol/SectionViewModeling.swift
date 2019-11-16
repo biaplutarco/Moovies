@@ -9,6 +9,7 @@
 import UIKit
 
 protocol SectionViewModeling: CollectionViewModeling {
+    var delegate: SectionViewDelegate? { get set }
     var title: String { get set }
     
     func createCollectionViewFlowLayout() -> UICollectionViewFlowLayout

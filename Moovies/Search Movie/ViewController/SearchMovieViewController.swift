@@ -10,13 +10,17 @@ import UIKit
 
 class SearchMovieViewController: UIViewController {
     lazy var searchMovieView: SearchMovieView = {
-        let searchMovieView = SearchMovieView()
+        let searchMovieView = SearchMovieView(viewModel: SearchMovieViewModel())
         return searchMovieView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
     }
 }
 

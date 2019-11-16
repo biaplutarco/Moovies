@@ -9,7 +9,7 @@
 import UIKit
 
 class GenresViewModel: SectionViewModeling {
-    var delegate: GenresViewDelegate?
+    var delegate: SectionViewDelegate?
 
     var title: String = "Gêneros"
     
@@ -23,7 +23,7 @@ class GenresViewModel: SectionViewModeling {
     
     var reloadData: (() -> Void)?
     
-    init(delegate: GenresViewDelegate? = nil) {
+    init(delegate: SectionViewDelegate? = nil) {
         self.delegate = delegate
     }
     

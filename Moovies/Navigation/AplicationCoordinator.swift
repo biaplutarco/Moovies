@@ -30,19 +30,3 @@ extension AplicationCoordinator: FavoriteViewDelegate {
         self.navigationController.present(viewController, animated: true, completion: nil)
     }
 }
-
-//extension AplicationCoordinator: CollectionViewModelDelegate {
-//    func didSelectedGenre(_ genre: Genre) {
-//        let viewModel = MovieViewModel(genre: genre, delegate: self)
-//        let movieViewController = CollectionViewController(viewModel: viewModel, delegate: self)
-//        self.navigationController.pushViewController(movieViewController, animated: true)
-//    }
-//}
-//
-//extension AplicationCoordinator: CollectionViewControllerDelegate {
-//    func didTappedFavorites() {
-//        let viewModel = FavoriteViewModel()
-//        let favoriteViewController = CollectionViewController(viewModel: viewModel, delegate: self)
-//        self.navigationController.present(favoriteViewController, animated: true, completion: nil)
-//    }
-//}

@@ -9,6 +9,8 @@
 import UIKit
 
 class MoviesViewModel: SectionViewModeling {
+    var delegate: SectionViewDelegate?
+
     var title: String = "Filmes"
         
     var numberOfItems: Int = 0
@@ -27,15 +29,15 @@ class MoviesViewModel: SectionViewModeling {
         self.genreID = genre.id
     }
     
-    private func createFavoriteMovie(from movie: Movie) {
-        let favoriteMovie = FavoriteMovie(context: FavoriteMovie.context)
-        favoriteMovie.id = Int32(movie.id)
-        favoriteMovie.overview = movie.overview
-        favoriteMovie.posterPath = movie.posterPath
-        favoriteMovie.title = movie.title
-        favoriteMovie.save()
-    }
-    
+//    private func createFavoriteMovie(from movie: Movie) {
+//        let favoriteMovie = FavoriteMovie(context: FavoriteMovie.context)
+//        favoriteMovie.id = Int32(movie.id)
+//        favoriteMovie.overview = movie.overview
+//        favoriteMovie.posterPath = movie.posterPath
+//        favoriteMovie.title = movie.title
+//        favoriteMovie.save()
+//    }
+//
     private func getFavoriteMovies() -> [FavoriteMovie] {
         return FavoriteMovie.all()
     }
@@ -90,12 +92,14 @@ class MoviesViewModel: SectionViewModeling {
         if checkFavorite(movie: movie) == true {
             getFavoriteMovies().forEach { (favoritedMovie) in
                 if favoritedMovie.id == movie.id {
-                    favoritedMovie.destroy()
+//                    favoritedMovie.destroy()
+                    delegate?.unFavoriteMovie(favoritedMovie)
                     cell.viewModel.changeStateOf(button: cell.favoriteButton, to: false)
                 }
             }
         } else {
-            createFavoriteMovie(from: movie)
+//            createFavoriteMovie(from: movie)
+            delegate?.favoriteMovie(movie)
             cell.viewModel.changeStateOf(button: cell.favoriteButton, to: true)
         }
     }

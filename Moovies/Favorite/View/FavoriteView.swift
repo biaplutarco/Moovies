@@ -26,7 +26,7 @@ class FavoriteView: UIView {
     lazy var searchButton: UIButton = {
         let button = UIButton()
         button.setTitle(viewModel.buttonTitle, for: .normal)
-        button.setTitleColor(UIColor.action, for: .normal)
+        button.setTitleColor(UIColor.selected, for: .normal)
         button.addTarget(self, action: #selector(didTappedButton(_:)), for: .touchUpInside)
         return button
     }()
