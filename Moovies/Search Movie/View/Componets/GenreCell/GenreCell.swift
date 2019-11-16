@@ -50,10 +50,10 @@ extension GenreCell: ViewCoding {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            genreBackgroundView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            genreBackgroundView.topAnchor.constraint(equalTo: topAnchor),
             genreBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 4),
             genreBackgroundView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -4),
-            genreBackgroundView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
+            genreBackgroundView.bottomAnchor.constraint(equalTo: bottomAnchor),
             
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor)

@@ -79,9 +79,9 @@ extension SearchMovieView: ViewCoding {
             genreSectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 24),
             genreSectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             genreSectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
-            genreSectionView.heightAnchor.constraint(equalToConstant: 80),
+            genreSectionView.heightAnchor.constraint(equalToConstant: 90),
             
-            movieSectionView.topAnchor.constraint(equalTo: genreSectionView.bottomAnchor, constant: 48),
+            movieSectionView.topAnchor.constraint(equalTo: genreSectionView.bottomAnchor, constant: 24),
             movieSectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             movieSectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
             movieSectionView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -48),

@@ -55,7 +55,7 @@ class GenresViewModel: SectionViewModeling {
     }
     
     func getItemSizeTo(collectionView: UICollectionView) -> CGSize {
-        return CGSize(width: 140, height: 50)
+        return CGSize(width: 140, height: 36)
     }
     
     func didSelect(collectionView: UICollectionView, itemAt indexPath: IndexPath) {
