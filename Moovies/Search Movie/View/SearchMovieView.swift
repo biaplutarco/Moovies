@@ -9,18 +9,19 @@
 import UIKit
 
 class SearchMovieView: UIView {
-    var viewModel: MovieViewModel
+    var viewModel: MovieViewModel?
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.preferredFont(forTextStyle: .title1)
+        label.text = "Buscar Filmes"
+        label.font = UIFont.preferredFont(forTextStyle: .title2)
         label.textAlignment = .center
         return label
     }()
     
     lazy var genresView: GenresView = {
-        let genreViewModel = GenreViewModel()
-        let genresView = GenresView(viewModel: genreViewModel)
+        let genresViewModel = GenresViewModel(delegate: self)
+        let genresView = GenresView(viewModel: genresViewModel)
         return genresView
     }()
     
@@ -29,19 +30,19 @@ class SearchMovieView: UIView {
                                               collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = .clear
-        viewModel.registerCellTo(collectionView: collectionView)
+        collectionView.backgroundColor = .yellow
         return collectionView
     }()
     
-    init(viewModel: MovieViewModel) {
-        self.viewModel = viewModel
+    init() {
         super.init(frame: CGRect.zero)
+        setupView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 }
 
 extension SearchMovieView: ViewCoding {
@@ -61,11 +62,12 @@ extension SearchMovieView: ViewCoding {
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
 
-            genresView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: -12),
+            genresView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 24),
             genresView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             genresView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            genresView.heightAnchor.constraint(equalToConstant: 80),
 
-            collectionView.topAnchor.constraint(equalTo: genresView.bottomAnchor, constant: -48),
+            collectionView.topAnchor.constraint(equalTo: genresView.bottomAnchor, constant: 48),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -48)
@@ -81,18 +83,33 @@ extension SearchMovieView: UICollectionViewDelegate, UICollectionViewDataSource,
 UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.numberOfItems
+        viewModel?.numberOfItems ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        viewModel.dequeueCellTo(collectionView: collectionView, indexPath: indexPath)
+        viewModel?.dequeueCellTo(collectionView: collectionView, indexPath: indexPath) ?? UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.didSelect(collectionView: collectionView, itemAt: indexPath)
+        viewModel?.didSelect(collectionView: collectionView, itemAt: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return viewModel.getItemSizeTo(collectionView: collectionView)
+        return viewModel?.getItemSizeTo(collectionView: collectionView) ?? CGSize()
+    }
+}
+
+extension SearchMovieView: GenresViewDelegate {
+    func didSelectedGenre(_ genre: Genre) {
+        viewModel = MovieViewModel(genre: genre)
+        
+        viewModel!.getData()
+        viewModel!.registerCellTo(collectionView: collectionView)
+
+        viewModel!.reloadData = {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
     }
 }

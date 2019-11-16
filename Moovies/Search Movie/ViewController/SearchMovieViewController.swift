@@ -9,9 +9,34 @@
 import UIKit
 
 class SearchMovieViewController: UIViewController {
-
+    lazy var searchMovieView: SearchMovieView = {
+        let searchMovieView = SearchMovieView()
+        return searchMovieView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
     }
+}
 
+extension SearchMovieViewController: ViewCoding {
+    func buildViewHierarchy() {
+        view.addSubview(searchMovieView)
+    }
+    
+    func setupConstraints() {
+        searchMovieView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            searchMovieView.topAnchor.constraint(equalTo: view.topAnchor),
+            searchMovieView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            searchMovieView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            searchMovieView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+    
+    func setupAdditionalConfiguration() {
+        view.backgroundColor = .background
+    }
 }

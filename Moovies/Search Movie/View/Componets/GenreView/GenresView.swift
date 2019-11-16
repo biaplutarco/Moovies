@@ -9,8 +9,8 @@
 import UIKit
 
 class GenresView: UIView {
-    var viewModel: GenreViewModel
-    
+    var viewModel: GenresViewModel
+        
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = viewModel.title
@@ -18,18 +18,23 @@ class GenresView: UIView {
     }()
     
     lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: CGRect.zero,
-                                              collectionViewLayout: UICollectionViewFlowLayout())
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .horizontal
+        flowLayout.sectionInset = UIEdgeInsets(top: 2, left: 4, bottom: 2, right: 4)
+        
+        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: flowLayout)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = .clear
+        collectionView.showsHorizontalScrollIndicator = false
         viewModel.registerCellTo(collectionView: collectionView)
         return collectionView
     }()
     
-    init(viewModel: GenreViewModel) {
+    init(viewModel: GenresViewModel) {
         self.viewModel = viewModel
         super.init(frame: CGRect.zero)
+        setupView()
     }
     
     required init?(coder: NSCoder) {
@@ -61,7 +66,13 @@ extension GenresView: ViewCoding {
     
     func setupAdditionalConfiguration() {
         backgroundColor = .clear
-    }
+        
+        viewModel.getData()
+        viewModel.reloadData = {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }    }
 }
 
 extension GenresView: UICollectionViewDelegate, UICollectionViewDataSource,

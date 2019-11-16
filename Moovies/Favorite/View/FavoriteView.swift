@@ -86,6 +86,13 @@ extension FavoriteView: ViewCoding {
     func setupAdditionalConfiguration() {
         backgroundColor = .clear
         getEmptyFeedback()
+        
+        viewModel.getData()
+        viewModel.reloadData = {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
     }
 }
 

@@ -11,33 +11,42 @@ import UIKit
 class GenreCell: UICollectionViewCell {
     var viewModel: GenreCellViewModel! {
         didSet {
-            genreButton.setTitle(viewModel.name, for: .normal)
+            titleLabel.text = viewModel.name
             setupView()
         }
     }
     
-    lazy var genreButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("loading", for: .normal)
-        button.backgroundColor = .action
-        button.layer.cornerRadius = 20
-        return button
+    lazy var genreBackgroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .action
+        view.layer.cornerRadius = 16
+        return view
+    }()
+    
+    lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        return label
     }()
 }
 
 extension GenreCell: ViewCoding {
     func buildViewHierarchy() {
-        addSubview(genreButton)
+        addSubview(genreBackgroundView)
+        addSubview(titleLabel)
     }
     
     func setupConstraints() {
-        genreButton.translatesAutoresizingMaskIntoConstraints = false
+        genreBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            genreButton.topAnchor.constraint(equalTo: topAnchor),
-            genreButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            genreButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-            genreButton.bottomAnchor.constraint(equalTo: bottomAnchor)
+            genreBackgroundView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            genreBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 4),
+            genreBackgroundView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -4),
+            genreBackgroundView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
+            
+            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }
     
