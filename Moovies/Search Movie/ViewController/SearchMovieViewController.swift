@@ -9,18 +9,25 @@
 import UIKit
 
 class SearchMovieViewController: UIViewController {
+    var viewModel: SearchMovieViewModel
+    
     lazy var searchMovieView: SearchMovieView = {
-        let searchMovieView = SearchMovieView(viewModel: SearchMovieViewModel())
+        let searchMovieView = SearchMovieView(viewModel: viewModel)
         return searchMovieView
     }()
+    
+    init(viewModel: SearchMovieViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
     }
 }
 

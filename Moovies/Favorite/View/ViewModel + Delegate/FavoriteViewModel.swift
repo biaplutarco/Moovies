@@ -36,6 +36,10 @@ class FavoriteViewModel: CollectionViewModeling {
     }
     
     func getData() {
+//        FavoriteMovie.all().forEach({ $0.destroy() })
+        
+        
+        
         data = FavoriteMovie.all()
         reloadData?()
     }

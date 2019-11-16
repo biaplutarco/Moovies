@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Movie: Codable {
+struct Movie: Codable, Equatable {
     var id: Int
     var title: String
     var overview: String
@@ -17,6 +17,10 @@ struct Movie: Codable {
     enum CodingKeys: String, CodingKey {
         case id, title, overview
         case posterPath = "poster_path"
+    }
+    
+    static func ==(lhs: Movie, rhs: Movie) -> Bool {
+        return lhs.id == rhs.id
     }
 }
 

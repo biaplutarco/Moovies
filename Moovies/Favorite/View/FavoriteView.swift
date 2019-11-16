@@ -56,6 +56,14 @@ class FavoriteView: UIView {
     @objc func didTappedButton(_ sender: UIButton) {
         viewModel.delegate?.didTappedSearchButton()
     }
+    
+    func reloadData() {
+        viewModel.getData()
+        getEmptyFeedback()
+        viewModel.reloadData = {
+            self.collectionView.reloadData()
+        }
+    }
 }
 
 extension FavoriteView: ViewCoding {

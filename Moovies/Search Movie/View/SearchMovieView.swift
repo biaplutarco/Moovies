@@ -10,9 +10,7 @@ import UIKit
 
 class SearchMovieView: UIView {
     var viewModel: SearchMovieViewModel
-    
-    weak var delegate: SearchMovieViewDelegate?
-    
+        
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = viewModel.title
@@ -55,7 +53,7 @@ class SearchMovieView: UIView {
     
     @objc func didTappedSaveButton() {
         viewModel.saveFavorites()
-        delegate?.didTappedSaveButton()
+        viewModel.delegate?.didTappedSaveButton()
     }
     
     private func createMovieSectionWith(viewModel: MoviesViewModel) -> SectionView {
@@ -109,16 +107,20 @@ extension SearchMovieView: ViewCoding {
 }
 
 extension SearchMovieView: SectionViewDelegate {
-    func unFavoriteMovie(_ favoriteMovie: FavoriteMovie) {
-        viewModel.newUnFavoriteMovies.append(favoriteMovie)
+    func isMovieAlreadyFavorite(_ movie: Movie) -> Bool {
+        viewModel.isMovieAlreadyFavorite(movie)
     }
     
-    func favoriteMovie(_ movie: Movie) {
-        viewModel.newFavoriteMovies.append(movie)
+    func unFavorite(movie: Movie) {
+        viewModel.unFavorite(movie: movie)
+    }
+    
+    func favorite(movie: Movie) {
+        viewModel.favorite(movie: movie)
     }
     
     func didSelectedGenre(_ genre: Genre) {
-        let moviesViewModel = MoviesViewModel(genre: genre)
+        let moviesViewModel = MoviesViewModel(genre: genre, delegate: self)
         movieSectionView.viewModel = moviesViewModel
     }
 }

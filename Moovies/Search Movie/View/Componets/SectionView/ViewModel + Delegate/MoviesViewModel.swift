@@ -25,19 +25,12 @@ class MoviesViewModel: SectionViewModeling {
     
     private var genreID: Int
     
-    init(genre: Genre) {
+    init(genre: Genre, delegate: SectionViewDelegate? = nil) {
         self.genreID = genre.id
+        self.delegate = delegate
     }
     
-//    private func createFavoriteMovie(from movie: Movie) {
-//        let favoriteMovie = FavoriteMovie(context: FavoriteMovie.context)
-//        favoriteMovie.id = Int32(movie.id)
-//        favoriteMovie.overview = movie.overview
-//        favoriteMovie.posterPath = movie.posterPath
-//        favoriteMovie.title = movie.title
-//        favoriteMovie.save()
-//    }
-//
+
     private func getFavoriteMovies() -> [FavoriteMovie] {
         return FavoriteMovie.all()
     }
@@ -89,19 +82,27 @@ class MoviesViewModel: SectionViewModeling {
         guard let movie = data[indexPath.row] as? Movie,
             let cell = collectionView.cellForItem(at: indexPath) as? MovieCell else { return }
         
-        if checkFavorite(movie: movie) == true {
-            getFavoriteMovies().forEach { (favoritedMovie) in
-                if favoritedMovie.id == movie.id {
-//                    favoritedMovie.destroy()
-                    delegate?.unFavoriteMovie(favoritedMovie)
-                    cell.viewModel.changeStateOf(button: cell.favoriteButton, to: false)
-                }
-            }
-        } else {
-//            createFavoriteMovie(from: movie)
-            delegate?.favoriteMovie(movie)
+        
+        if delegate?.isMovieAlreadyFavorite(movie) == true {
+            delegate?.unFavorite(movie: movie)
             cell.viewModel.changeStateOf(button: cell.favoriteButton, to: false)
+        } else {
+            delegate?.favorite(movie: movie)
+            cell.viewModel.changeStateOf(button: cell.favoriteButton, to: true)
         }
+        
+        
+//        if checkFavorite(movie: movie) == true {
+//            getFavoriteMovies().forEach { (favoritedMovie) in
+//                if favoritedMovie.id == movie.id {
+//                    delegate?.unFavoriteMovie(favoritedMovie)
+//                    cell.viewModel.changeStateOf(button: cell.favoriteButton, to: false)
+//                }
+//            }
+//        } else {
+//            delegate?.favoriteMovie(movie)
+//            cell.viewModel.changeStateOf(button: cell.favoriteButton, to: true)
+//        }
     }
     
     func createCollectionViewFlowLayout() -> UICollectionViewFlowLayout {

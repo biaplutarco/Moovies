@@ -10,6 +10,7 @@ import Foundation
 
 protocol SectionViewDelegate {
     func didSelectedGenre(_ genre: Genre)
-    func unFavoriteMovie(_ favoriteMovie: FavoriteMovie)
-    func favoriteMovie(_ movie: Movie)
+    func unFavorite(movie: Movie)
+    func favorite(movie: Movie)
+    func isMovieAlreadyFavorite(_ movie: Movie) -> Bool
 }

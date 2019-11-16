@@ -18,7 +18,8 @@ class AplicationCoordinator: Coordinator {
     }()
     
     lazy var searchMovieViewController: SearchMovieViewController = {
-        let viewController = SearchMovieViewController()
+        let viewModel = SearchMovieViewModel(delegate: self)
+        let viewController = SearchMovieViewController(viewModel: viewModel)
         return viewController
     }()
 
@@ -38,7 +39,7 @@ extension AplicationCoordinator: FavoriteViewDelegate {
 extension AplicationCoordinator: SearchMovieViewDelegate {
     func didTappedSaveButton() {
         self.searchMovieViewController.dismiss(animated: true) {
-            self.rootViewController.favoriteView.collectionView.reloadData()
+            self.rootViewController.reloadData()
         }
     }
 }

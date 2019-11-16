@@ -30,6 +30,10 @@ class FavoriteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    func reloadData() {
+        favoriteView.reloadData()
+    }
 }
 
 extension FavoriteViewController: ViewCoding {
