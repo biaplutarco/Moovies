@@ -26,10 +26,18 @@ class MovieCell: UICollectionViewCell {
     lazy var posterImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.getImageFrom(path: nil)
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 12
         imageView.layer.masksToBounds = true
         return imageView
+    }()
+    
+    lazy var blackView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.black
+        view.layer.cornerRadius = 12
+        view.layer.opacity = 0.5
+        return view
     }()
     
     lazy var favoriteButton: UIButton = {
@@ -43,39 +51,47 @@ class MovieCell: UICollectionViewCell {
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .lightGray
+        label.textColor = .white
+        label.textAlignment = .center
         label.text = "loading"
-        label.numberOfLines = 2
+        label.numberOfLines = 3
         return label
     }()
 }
 
 extension MovieCell: ViewCoding {
     func buildViewHierarchy() {
+        addSubview(posterImageView)
+        addSubview(blackView)
         addSubview(favoriteButton)
         addSubview(titleLabel)
-        addSubview(posterImageView)
     }
     
     func setupConstraints() {
+        posterImageView.translatesAutoresizingMaskIntoConstraints = false
+        blackView.translatesAutoresizingMaskIntoConstraints = false
         favoriteButton.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        posterImageView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
+            posterImageView.topAnchor.constraint(equalTo: topAnchor),
+            posterImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            posterImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            posterImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            blackView.topAnchor.constraint(equalTo: posterImageView.topAnchor),
+            blackView.leadingAnchor.constraint(equalTo: posterImageView.leadingAnchor),
+            blackView.trailingAnchor.constraint(equalTo: posterImageView.trailingAnchor),
+            blackView.bottomAnchor.constraint(equalTo: posterImageView.bottomAnchor),
+            
+            favoriteButton.topAnchor.constraint(equalTo: topAnchor, constant: 8),
             favoriteButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
             favoriteButton.heightAnchor.constraint(equalToConstant: 30),
             favoriteButton.widthAnchor.constraint(equalTo: favoriteButton.heightAnchor),
-            favoriteButton.bottomAnchor.constraint(equalTo: posterImageView.topAnchor, constant: -12),
             
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 12),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            titleLabel.trailingAnchor.constraint(equalTo: favoriteButton.leadingAnchor, constant: -8),
-            
-            posterImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
-            posterImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            posterImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-            posterImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8)
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8)
         ])
     }
     

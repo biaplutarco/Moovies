@@ -58,7 +58,7 @@ class FavoriteViewModel: CollectionViewModeling {
     }
     
     func getItemSizeTo(collectionView: UICollectionView) -> CGSize {
-        return CGSize(width: collectionView.frame.width/4, height: 200)
+        return CGSize(width: collectionView.frame.width/2.2, height: 220)
     }
     
     func didSelect(collectionView: UICollectionView, itemAt indexPath: IndexPath) {

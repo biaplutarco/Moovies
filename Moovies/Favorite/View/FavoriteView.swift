@@ -12,8 +12,10 @@ class FavoriteView: UIView {
     var viewModel: FavoriteViewModel
     
     lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: CGRect(),
-                                              collectionViewLayout: UICollectionViewFlowLayout())
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.sectionInset = UIEdgeInsets(top: 2, left: 4, bottom: 2, right: 4)
+        
+        let collectionView = UICollectionView(frame: CGRect(), collectionViewLayout: flowLayout)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = .clear

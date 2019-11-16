@@ -234,7 +234,6 @@
 			isa = PBXGroup;
 			children = (
 				5762ECCB237F7D57001B741A /* GenreView */,
-				5787D9992375072100FC01F2 /* GenreCell */,
 				5787D9882373A97B00FC01F2 /* MovieCell */,
 			);
 			path = Componets;
@@ -245,6 +244,7 @@
 			children = (
 				5762ECC6237F75A7001B741A /* GenresView.swift */,
 				5762ECCE237F87B6001B741A /* ViewModel + Delegate */,
+				5787D9992375072100FC01F2 /* GenreCell */,
 			);
 			path = GenreView;
 			sourceTree = "<group>";

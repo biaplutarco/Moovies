@@ -59,6 +59,7 @@ class MovieViewModel: CollectionViewModeling {
     func getData() {
         APIManager.shared.getMoviesFromGenre(id: genreID) { (movies) in
             if let movies = movies {
+                self.data.removeAll()
                 self.data.append(contentsOf: movies.movies)
                 self.reloadData?()
             } else {
@@ -84,7 +85,7 @@ class MovieViewModel: CollectionViewModeling {
     }
     
     func getItemSizeTo(collectionView: UICollectionView) -> CGSize {
-        return CGSize(width: collectionView.frame.width/2.2, height: 100)
+        return CGSize(width: collectionView.frame.width/2.2, height: 60)
     }
     
     func didSelect(collectionView: UICollectionView, itemAt indexPath: IndexPath) {
