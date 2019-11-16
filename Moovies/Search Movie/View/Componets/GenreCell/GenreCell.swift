@@ -16,6 +16,16 @@ class GenreCell: UICollectionViewCell {
         }
     }
     
+    override var isSelected: Bool {
+        didSet {
+            if isSelected == true {
+                genreBackgroundView.backgroundColor = .selected
+            } else {
+                genreBackgroundView.backgroundColor = .action
+            }
+        }
+    }
+    
     lazy var genreBackgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = .action
