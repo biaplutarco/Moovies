@@ -1,5 +1,5 @@
 //
-//  GenresView.swift
+//  SectionView.swift
 //  Moovies
 //
 //  Created by aluno on 15/11/19.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-class GenresView: UIView {
-    var viewModel: GenresViewModel
+class SectionView: UIView {
+    var viewModel: SectionViewModeling
         
     lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -18,20 +18,14 @@ class GenresView: UIView {
     }()
     
     lazy var collectionView: UICollectionView = {
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection = .horizontal
-        flowLayout.sectionInset = UIEdgeInsets(top: 2, left: 4, bottom: 2, right: 4)
-        
-        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: flowLayout)
+        let collectionView = viewModel.createCollectionView()
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = .clear
-        collectionView.showsHorizontalScrollIndicator = false
-        viewModel.registerCellTo(collectionView: collectionView)
         return collectionView
     }()
     
-    init(viewModel: GenresViewModel) {
+    init(viewModel: SectionViewModeling) {
         self.viewModel = viewModel
         super.init(frame: CGRect.zero)
         setupView()
@@ -42,7 +36,7 @@ class GenresView: UIView {
     }
 }
 
-extension GenresView: ViewCoding {
+extension SectionView: ViewCoding {
     func buildViewHierarchy() {
         addSubview(titleLabel)
         addSubview(collectionView)
@@ -72,10 +66,11 @@ extension GenresView: ViewCoding {
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
-        }    }
+        }
+    }
 }
 
-extension GenresView: UICollectionViewDelegate, UICollectionViewDataSource,
+extension SectionView: UICollectionViewDelegate, UICollectionViewDataSource,
 UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

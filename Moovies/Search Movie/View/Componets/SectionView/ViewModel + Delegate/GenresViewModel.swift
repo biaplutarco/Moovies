@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GenresViewModel: CollectionViewModeling {
+class GenresViewModel: SectionViewModeling {
     var delegate: GenresViewDelegate?
 
     var title: String = "Gêneros"
@@ -62,5 +62,12 @@ class GenresViewModel: CollectionViewModeling {
         if let genre = data[indexPath.row] as? Genre {
             delegate?.didSelectedGenre(genre)
         }
+    }
+    
+    func createCollectionViewFlowLayout() -> UICollectionViewFlowLayout {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .horizontal
+        flowLayout.sectionInset = UIEdgeInsets(top: 8, left: 4, bottom: 8, right: 4)
+        return flowLayout
     }
 }

@@ -8,10 +8,8 @@
 
 import UIKit
 
-class MovieViewModel: CollectionViewModeling {
-    var delegate: CollectionViewModelDelegate?
-    
-    var title: String
+class MoviesViewModel: SectionViewModeling {
+    var title: String = "Filmes"
         
     var numberOfItems: Int = 0
     
@@ -25,10 +23,8 @@ class MovieViewModel: CollectionViewModeling {
     
     private var genreID: Int
     
-    init(genre: Genre, delegate: CollectionViewModelDelegate? = nil) {
-        self.title = genre.name
+    init(genre: Genre) {
         self.genreID = genre.id
-        self.delegate = delegate
     }
     
     private func createFavoriteMovie(from movie: Movie) {
@@ -59,7 +55,6 @@ class MovieViewModel: CollectionViewModeling {
     func getData() {
         APIManager.shared.getMoviesFromGenre(id: genreID) { (movies) in
             if let movies = movies {
-                self.data.removeAll()
                 self.data.append(contentsOf: movies.movies)
                 self.reloadData?()
             } else {
@@ -104,4 +99,12 @@ class MovieViewModel: CollectionViewModeling {
             cell.viewModel.changeStateOf(button: cell.favoriteButton, to: true)
         }
     }
+    
+    func createCollectionViewFlowLayout() -> UICollectionViewFlowLayout {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .vertical
+        flowLayout.sectionInset = UIEdgeInsets(top: 8, left: 4, bottom: 8, right: 4)
+        return flowLayout
+    }
+    
 }

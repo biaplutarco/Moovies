@@ -19,3 +19,12 @@ protocol CollectionViewModeling {
     func getItemSizeTo(collectionView: UICollectionView) -> CGSize 
     func didSelect(collectionView: UICollectionView, itemAt indexPath: IndexPath)
 }
+
+extension CollectionViewModeling {
+    func createCollectionView() -> UICollectionView {
+        let collectionView = UICollectionView(frame: CGRect.zero,
+                                              collectionViewLayout: UICollectionViewFlowLayout())
+        registerCellTo(collectionView: collectionView)
+        return collectionView
+    }
+}

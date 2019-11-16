@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol GenresViewDelegate {
+protocol SectionViewDelegate {
     func didSelectedGenre(_ genre: Genre)
 }

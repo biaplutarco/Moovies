@@ -9,8 +9,6 @@
 import UIKit
 
 class SearchMovieView: UIView {
-    var viewModel: MovieViewModel?
-    
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Buscar Filmes"
@@ -19,19 +17,10 @@ class SearchMovieView: UIView {
         return label
     }()
     
-    lazy var genresView: GenresView = {
+    lazy var genreSectionView: SectionView = {
         let genresViewModel = GenresViewModel(delegate: self)
-        let genresView = GenresView(viewModel: genresViewModel)
-        return genresView
-    }()
-    
-    lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: CGRect.zero,
-                                              collectionViewLayout: UICollectionViewFlowLayout())
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.backgroundColor = .yellow
-        return collectionView
+        let sectionView = SectionView(viewModel: genresViewModel)
+        return sectionView
     }()
     
     init() {
@@ -43,34 +32,39 @@ class SearchMovieView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func createMovieSectionWith(viewModel: MoviesViewModel) {
+        let movieSectionView = SectionView(viewModel: viewModel)
+        addSubview(movieSectionView)
+        
+        movieSectionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            movieSectionView.topAnchor.constraint(equalTo: genreSectionView.bottomAnchor, constant: 48),
+            movieSectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            movieSectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            movieSectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -48)
+        ])
+    }
 }
 
 extension SearchMovieView: ViewCoding {
     func buildViewHierarchy() {
         addSubview(titleLabel)
-        addSubview(genresView)
-        addSubview(collectionView)
+        addSubview(genreSectionView)
     }
     
     func setupConstraints() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        genresView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        genreSectionView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 24),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
 
-            genresView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 24),
-            genresView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            genresView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
-            genresView.heightAnchor.constraint(equalToConstant: 80),
-
-            collectionView.topAnchor.constraint(equalTo: genresView.bottomAnchor, constant: 48),
-            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
-            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -48)
+            genreSectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 24),
+            genreSectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            genreSectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            genreSectionView.heightAnchor.constraint(equalToConstant: 80)
         ])
     }
     
@@ -79,37 +73,9 @@ extension SearchMovieView: ViewCoding {
     }
 }
 
-extension SearchMovieView: UICollectionViewDelegate, UICollectionViewDataSource,
-UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel?.numberOfItems ?? 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        viewModel?.dequeueCellTo(collectionView: collectionView, indexPath: indexPath) ?? UICollectionViewCell()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel?.didSelect(collectionView: collectionView, itemAt: indexPath)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return viewModel?.getItemSizeTo(collectionView: collectionView) ?? CGSize()
-    }
-}
-
-extension SearchMovieView: GenresViewDelegate {
+extension SearchMovieView: SectionViewDelegate {
     func didSelectedGenre(_ genre: Genre) {
-        viewModel = MovieViewModel(genre: genre)
-        
-        viewModel!.getData()
-        viewModel!.registerCellTo(collectionView: collectionView)
-
-        viewModel!.reloadData = {
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }
+        let moviesViewModel = MoviesViewModel(genre: genre)
+        createMovieSectionWith(viewModel: moviesViewModel)
     }
 }
