@@ -12,10 +12,8 @@ import UIKit
     //  Trata o error caso não seja um Favorite Movie ou pelo menos corrigir a mensagem do fatal error
 
 class FavoriteViewModel: CollectionViewModeling {
-    var delegate: CollectionViewModelDelegate?
-    
-    var title: String = "Filmes Favoritos"
-    
+    weak var delegate: FavoriteViewDelegate?
+
     var buttonTitle: String = "Buscar filmes"
     
     var isEmptyMessage: String = "Você não tem filmes favoritados ainda. Adicione algum!"
@@ -32,6 +30,10 @@ class FavoriteViewModel: CollectionViewModeling {
     }
     
     var reloadData: (() -> Void)?
+    
+    init(delegate: FavoriteViewDelegate? = nil) {
+        self.delegate = delegate
+    }
     
     func getData() {
         data = FavoriteMovie.all()

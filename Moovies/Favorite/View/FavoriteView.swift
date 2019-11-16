@@ -10,7 +10,6 @@ import UIKit
 
 class FavoriteView: UIView {
     var viewModel: FavoriteViewModel
-    weak var delegate: CollectionViewControllerDelegate?
     
     lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: CGRect(),
@@ -26,6 +25,7 @@ class FavoriteView: UIView {
         let button = UIButton()
         button.setTitle(viewModel.buttonTitle, for: .normal)
         button.setTitleColor(UIColor.action, for: .normal)
+        button.addTarget(self, action: #selector(didTappedButton(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -37,9 +37,8 @@ class FavoriteView: UIView {
         return label
     }()
 
-    init(viewModel: FavoriteViewModel, delegate: CollectionViewControllerDelegate? = nil) {
+    init(viewModel: FavoriteViewModel) {
         self.viewModel = viewModel
-        self.delegate = delegate
         super.init(frame: CGRect.zero)
         setupView()
     }
@@ -50,6 +49,10 @@ class FavoriteView: UIView {
     
     private func getEmptyFeedback() {
         emptyLabel.isHidden = !viewModel.isEmpty
+    }
+    
+    @objc func didTappedButton(_ sender: UIButton) {
+        viewModel.delegate?.didTappedSearchButton()
     }
 }
 

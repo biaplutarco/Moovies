@@ -27,7 +27,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     
     func setupView() {
         setupNavigationBar()
-        title = viewModel.title
+//        title = viewModel.title
         collectionView.backgroundColor = .white
         viewModel.registerCellTo(collectionView: collectionView)
 

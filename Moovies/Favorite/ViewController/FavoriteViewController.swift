@@ -9,18 +9,17 @@
 import UIKit
 
 class FavoriteViewController: UIViewController {
-    var viewModel: FavoriteControllerViewModel
-    weak var delegate: CollectionViewControllerDelegate?
+    var viewModel: FavoriteViewModel
     
     lazy var favoriteView: FavoriteView = {
-        let favoriteView = FavoriteView(viewModel: viewModel.favoriteViewModel)
+        let favoriteView = FavoriteView(viewModel: viewModel)
         return favoriteView
     }()
     
-    init(viewModel: FavoriteControllerViewModel, delegate: CollectionViewControllerDelegate? = nil) {
+    init(viewModel: FavoriteViewModel, title: String) {
         self.viewModel = viewModel
-        self.delegate = delegate
         super.init(nibName: nil, bundle: nil)
+        self.title = title
         setupView()
     }
     
@@ -51,6 +50,5 @@ extension FavoriteViewController: ViewCoding {
     
     func setupAdditionalConfiguration() {
         view.backgroundColor = .background
-        title = viewModel.title
     }
 }

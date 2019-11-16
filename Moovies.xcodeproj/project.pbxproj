@@ -21,7 +21,7 @@
 		5762ECB4237F528D001B741A /* MoviePoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5762ECB3237F528D001B741A /* MoviePoster.swift */; };
 		5762ECB7237F5B00001B741A /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5762ECB6237F5B00001B741A /* FavoriteViewController.swift */; };
 		5762ECB9237F5FF0001B741A /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5762ECB8237F5FF0001B741A /* FavoriteView.swift */; };
-		5762ECBB237F616D001B741A /* FavoriteControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5762ECBA237F616D001B741A /* FavoriteControllerViewModel.swift */; };
+		5762ECBF237F70E1001B741A /* FavoriteViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5762ECBE237F70E1001B741A /* FavoriteViewDelegate.swift */; };
 		5787D93D237367CA00FC01F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787D93C237367CA00FC01F2 /* AppDelegate.swift */; };
 		5787D946237367CF00FC01F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5787D945237367CF00FC01F2 /* Assets.xcassets */; };
 		5787D949237367CF00FC01F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5787D947237367CF00FC01F2 /* LaunchScreen.storyboard */; };
@@ -78,7 +78,7 @@
 		5762ECB3237F528D001B741A /* MoviePoster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePoster.swift; sourceTree = "<group>"; };
 		5762ECB6237F5B00001B741A /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		5762ECB8237F5FF0001B741A /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
-		5762ECBA237F616D001B741A /* FavoriteControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteControllerViewModel.swift; sourceTree = "<group>"; };
+		5762ECBE237F70E1001B741A /* FavoriteViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewDelegate.swift; sourceTree = "<group>"; };
 		5787D939237367CA00FC01F2 /* Moovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5787D93C237367CA00FC01F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5787D945237367CF00FC01F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -202,7 +202,6 @@
 			isa = PBXGroup;
 			children = (
 				5762ECB6237F5B00001B741A /* FavoriteViewController.swift */,
-				5762ECBA237F616D001B741A /* FavoriteControllerViewModel.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -211,9 +210,18 @@
 			isa = PBXGroup;
 			children = (
 				5762ECB8237F5FF0001B741A /* FavoriteView.swift */,
-				5762ECA0237C7195001B741A /* FavoriteViewModel.swift */,
+				5762ECC0237F74D8001B741A /* ViewModel + Delegate */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		5762ECC0237F74D8001B741A /* ViewModel + Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				5762ECA0237C7195001B741A /* FavoriteViewModel.swift */,
+				5762ECBE237F70E1001B741A /* FavoriteViewDelegate.swift */,
+			);
+			path = "ViewModel + Delegate";
 			sourceTree = "<group>";
 		};
 		5787D930237367C900FC01F2 = {
@@ -526,8 +534,8 @@
 				5787D9952375042100FC01F2 /* GenreCellViewModel.swift in Sources */,
 				573D5E7B237B97D400EF7EE9 /* AplicationCoordinator.swift in Sources */,
 				5762ECA1237C7195001B741A /* FavoriteViewModel.swift in Sources */,
-				5762ECBB237F616D001B741A /* FavoriteControllerViewModel.swift in Sources */,
 				5787D98F2374FDBD00FC01F2 /* Genre.swift in Sources */,
+				5762ECBF237F70E1001B741A /* FavoriteViewDelegate.swift in Sources */,
 				5762ECAF237E40E1001B741A /* GenreRequest.swift in Sources */,
 				5762ECB4237F528D001B741A /* MoviePoster.swift in Sources */,
 			);

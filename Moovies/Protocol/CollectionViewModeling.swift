@@ -9,7 +9,6 @@
 import UIKit
 
 protocol CollectionViewModeling {
-    var delegate: CollectionViewModelDelegate? { get set }
     var numberOfItems: Int { get set }
     var data: [Any] { get set }
     var reloadData: (() -> Void)? { get set }

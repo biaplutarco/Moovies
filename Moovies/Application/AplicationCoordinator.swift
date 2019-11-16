@@ -12,15 +12,21 @@ class AplicationCoordinator: Coordinator {
     lazy var navigationController = UINavigationController(rootViewController: self.rootViewController)
     
     lazy var rootViewController: FavoriteViewController = {
-        let viewModel = FavoriteControllerViewModel()
-        let genreViewController = FavoriteViewController(viewModel: viewModel, delegate: self)
-        return genreViewController
+        let viewModel = FavoriteViewModel(delegate: self)
+        let viewController = FavoriteViewController(viewModel: viewModel, title: "Filmes Favoritos")
+        return viewController
     }()
 
     func start() {
         let window = UIApplication.shared.delegate?.window!
         window!.rootViewController = navigationController
         window!.makeKeyAndVisible()
+    }
+}
+
+extension AplicationCoordinator: FavoriteViewDelegate {
+    func didTappedSearchButton() {
+        // chamar a searchmovieviewcontroller
     }
 }
 
