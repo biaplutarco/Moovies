@@ -27,7 +27,7 @@ class SearchMovieView: UIView {
     
     lazy var movieSectionView: SectionView = {
         let moviesViewModel = MoviesViewModel(genre: Genre(id: 0, name: ""))
-        let sectionView = createMovieSectionWith(viewModel: moviesViewModel)
+        let sectionView = SectionView(viewModel: moviesViewModel)
         return sectionView
     }()
     
@@ -55,33 +55,20 @@ class SearchMovieView: UIView {
         viewModel.saveFavorites()
         viewModel.delegate?.didTappedSaveButton()
     }
-    
-    private func createMovieSectionWith(viewModel: MoviesViewModel) -> SectionView {
-        let movieSectionView = SectionView(viewModel: viewModel)
-        addSubview(movieSectionView)
-        
-        movieSectionView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            movieSectionView.topAnchor.constraint(equalTo: genreSectionView.bottomAnchor, constant: 48),
-            movieSectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            movieSectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
-            movieSectionView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -48)
-        ])
-        
-        return movieSectionView
-    }
 }
 
 extension SearchMovieView: ViewCoding {
     func buildViewHierarchy() {
         addSubview(titleLabel)
         addSubview(genreSectionView)
+        addSubview(movieSectionView)
         addSubview(saveButton)
     }
     
     func setupConstraints() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         genreSectionView.translatesAutoresizingMaskIntoConstraints = false
+        movieSectionView.translatesAutoresizingMaskIntoConstraints = false
         saveButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -93,6 +80,11 @@ extension SearchMovieView: ViewCoding {
             genreSectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             genreSectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
             genreSectionView.heightAnchor.constraint(equalToConstant: 80),
+            
+            movieSectionView.topAnchor.constraint(equalTo: genreSectionView.bottomAnchor, constant: 48),
+            movieSectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            movieSectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            movieSectionView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -48),
             
             saveButton.heightAnchor.constraint(equalToConstant: 50),
             saveButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
