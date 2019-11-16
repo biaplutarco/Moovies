@@ -8,9 +8,9 @@
 
 import UIKit
 
-class GenreViewModel: CollectionViewModeling {
-    var delegate: CollectionViewModelDelegate?
-        
+class GenresViewModel: CollectionViewModeling {
+    var delegate: GenresViewDelegate?
+
     var title: String = "Gêneros"
     
     var numberOfItems: Int = 0
@@ -23,7 +23,7 @@ class GenreViewModel: CollectionViewModeling {
     
     var reloadData: (() -> Void)?
     
-    init(delegate: CollectionViewModelDelegate? = nil) {
+    init(delegate: GenresViewDelegate? = nil) {
         self.delegate = delegate
     }
     
@@ -55,7 +55,7 @@ class GenreViewModel: CollectionViewModeling {
     }
     
     func getItemSizeTo(collectionView: UICollectionView) -> CGSize {
-        return CGSize(width: collectionView.frame.size.width, height: 50)
+        return CGSize(width: 140, height: 50)
     }
     
     func didSelect(collectionView: UICollectionView, itemAt indexPath: IndexPath) {
