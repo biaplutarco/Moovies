@@ -61,7 +61,10 @@ class SearchMovieViewModel {
         if checkInNewFavoriteMovies(movie) == true {
             if let index = newFavoriteMovies.firstIndex(of: movie) {
                 newFavoriteMovies.remove(at: index)
+                newUnFavoriteMovies.append(movie)
             }
+        } else {
+            newUnFavoriteMovies.append(movie)
         }
     }
     
@@ -90,12 +93,19 @@ class SearchMovieViewModel {
             favoriteMovie.title = movie.title
             favoriteMovie.save()
         }
+        newFavoriteMovies.removeAll()
+    }
+    
+    private func cleanArrays() {
+        newFavoriteMovies.removeAll()
+        newUnFavoriteMovies.removeAll()
     }
     
     //  Chama as funçoes de add e remove
     func saveFavorites() {
         addToFavorite()
         removeFromFavorite()
+        cleanArrays()
     }
     
     //  Checa se o filme ja é um favorito

@@ -82,7 +82,6 @@ class MoviesViewModel: SectionViewModeling {
         guard let movie = data[indexPath.row] as? Movie,
             let cell = collectionView.cellForItem(at: indexPath) as? MovieCell else { return }
         
-        
         if delegate?.isMovieAlreadyFavorite(movie) == true {
             delegate?.unFavorite(movie: movie)
             cell.viewModel.changeStateOf(button: cell.favoriteButton, to: false)
@@ -90,19 +89,6 @@ class MoviesViewModel: SectionViewModeling {
             delegate?.favorite(movie: movie)
             cell.viewModel.changeStateOf(button: cell.favoriteButton, to: true)
         }
-        
-        
-//        if checkFavorite(movie: movie) == true {
-//            getFavoriteMovies().forEach { (favoritedMovie) in
-//                if favoritedMovie.id == movie.id {
-//                    delegate?.unFavoriteMovie(favoritedMovie)
-//                    cell.viewModel.changeStateOf(button: cell.favoriteButton, to: false)
-//                }
-//            }
-//        } else {
-//            delegate?.favoriteMovie(movie)
-//            cell.viewModel.changeStateOf(button: cell.favoriteButton, to: true)
-//        }
     }
     
     func createCollectionViewFlowLayout() -> UICollectionViewFlowLayout {
