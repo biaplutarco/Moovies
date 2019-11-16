@@ -26,7 +26,8 @@ class AplicationCoordinator: Coordinator {
 
 extension AplicationCoordinator: FavoriteViewDelegate {
     func didTappedSearchButton() {
-        // chamar a searchmovieviewcontroller
+        let viewController = SearchMovieViewController()
+        self.navigationController.present(viewController, animated: true, completion: nil)
     }
 }
 
