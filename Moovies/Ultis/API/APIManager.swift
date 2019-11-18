@@ -31,7 +31,7 @@ class APIManager: NSObject {
         }
     }
     
-    private func get<T: Codable>(request: URLRequest, type: T.Type, completion: @escaping (T?) -> Void) {
+    func get<T: Codable>(request: URLRequest, type: T.Type, completion: @escaping (T?) -> Void) {
         let getTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
             
             if error != nil {

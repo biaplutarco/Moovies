@@ -19,7 +19,7 @@ class FavoriteView: UIView {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = .clear
-        viewModel.registerCellTo(collectionView: collectionView)
+        collectionView.registerCell(of: MovieCell.self)
         return collectionView
     }()
        
@@ -110,14 +110,12 @@ extension FavoriteView: UICollectionViewDelegate, UICollectionViewDataSource, UI
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        viewModel.dequeueCellTo(collectionView: collectionView, indexPath: indexPath)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.didSelect(collectionView: collectionView, itemAt: indexPath)
+        let cell = collectionView.dequeueCell(of: MovieCell.self, forIndexPath: indexPath)
+        cell.viewModel = viewModel.getMovieCellViewModel(of: indexPath.row)
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        viewModel.getItemSizeTo(collectionView: collectionView)
+        viewModel.itemSize
     }
 }

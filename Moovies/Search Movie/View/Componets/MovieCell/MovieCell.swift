@@ -16,12 +16,6 @@ class MovieCell: UICollectionViewCell {
             setupView()
         }
     }
-    
-    override var isSelected: Bool {
-        didSet {
-//            viewModel.getStateOf(button: favoriteButton)
-        }
-    }
         
     lazy var posterImageView: UIImageView = {
         let imageView = UIImageView()

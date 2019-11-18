@@ -6,12 +6,12 @@
 //  Copyright © 2019 aluno. All rights reserved.
 //
 
-import UIKit
+import CoreGraphics
 
     //  Fazer:
     //  Trata o error caso não seja um Favorite Movie ou pelo menos corrigir a mensagem do fatal error
 
-class FavoriteViewModel: CollectionViewModeling {
+class FavoriteViewModel {
     weak var delegate: FavoriteViewDelegate?
 
     var buttonTitle: String = "Buscar filmes"
@@ -19,6 +19,8 @@ class FavoriteViewModel: CollectionViewModeling {
     var isEmptyMessage: String = "Você não tem filmes favoritados ainda. Adicione algum!"
         
     var numberOfItems: Int = 0
+    
+    var itemSize: CGSize = CGSize(width: 160, height: 220)
     
     var isEmpty: Bool = true
     
@@ -36,48 +38,18 @@ class FavoriteViewModel: CollectionViewModeling {
     }
     
     func getData() {
-//        FavoriteMovie.all().forEach({ $0.destroy() })
-        
-        
-        
         data = FavoriteMovie.all()
         reloadData?()
     }
     
-    func registerCellTo(collectionView: UICollectionView) {
-        collectionView.registerCell(of: MovieCell.self)
-    }
-    
-    func dequeueCellTo(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueCell(of: MovieCell.self, forIndexPath: indexPath)
-        
-        guard let favoritedMovie = data[indexPath.row] as? FavoriteMovie else { fatalError("puts nao foi") }
+    func getMovieCellViewModel(of index: Int) -> MovieCellViewModel {
+        guard let favoritedMovie = data[index] as? FavoriteMovie else { fatalError("isn't a favorite movie") }
         let movie = Movie(id: Int(favoritedMovie.id),
                           title: favoritedMovie.title ?? "",
                           overview: favoritedMovie.overview ?? "",
                           posterPath: favoritedMovie.posterPath)
         
-        cell.viewModel = MovieCellViewModel(movie: movie)
-        
-        return cell
-    }
-    
-    func getItemSizeTo(collectionView: UICollectionView) -> CGSize {
-        return CGSize(width: collectionView.frame.width/2.2, height: 220)
-    }
-    
-    func didSelect(collectionView: UICollectionView, itemAt indexPath: IndexPath) {
-        guard let movie = data[indexPath.row] as? FavoriteMovie,
-            let cell = collectionView.cellForItem(at: indexPath) as? MovieCell else { return }
-        
-        FavoriteMovie.all().forEach { (favoritedMovie) in
-            if favoritedMovie == movie {
-                favoritedMovie.destroy()
-                collectionView.reloadData()
-                cell.viewModel.changeStateOf(button: cell.favoriteButton, to: false)
-            }
-        }
-        
-        cell.isSelected = true
+        let viewModel = MovieCellViewModel(movie: movie)
+        return viewModel
     }
 }
