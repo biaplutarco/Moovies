@@ -294,13 +294,13 @@
 			path = "CollectionViewModel + Delegate";
 			sourceTree = "<group>";
 		};
-		577855BE23823727001740E1 /* ViewModelProtocols */ = {
+		577855BE23823727001740E1 /* ViewModelProtocol */ = {
 			isa = PBXGroup;
 			children = (
 				573D5E76237B892B00EF7EE9 /* CollectionViewModeling.swift */,
 				5762ECD2237F9965001B741A /* SectionViewModeling.swift */,
 			);
-			path = ViewModelProtocols;
+			path = ViewModelProtocol;
 			sourceTree = "<group>";
 		};
 		5787D930237367C900FC01F2 = {
@@ -402,7 +402,7 @@
 			children = (
 				5762ECA5237CA96E001B741A /* ViewCoding.swift */,
 				573D5E70237B3FED00EF7EE9 /* Coordinator.swift */,
-				577855BE23823727001740E1 /* ViewModelProtocols */,
+				577855BE23823727001740E1 /* ViewModelProtocol */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";

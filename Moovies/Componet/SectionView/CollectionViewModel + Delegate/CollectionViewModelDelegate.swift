@@ -9,10 +9,6 @@
 import Foundation
 
 protocol CollectionViewModelDelegate {
-//    func didSelectedGenre(_ genre: Genre)
-//    func unFavorite(movie: Movie)
-//    func favorite(movie: Movie)
-//    func isMovieAlreadyFavorite(_ movie: Movie) -> Bool
 }
 
 protocol MovieCollectionViewModelDelegate: CollectionViewModelDelegate {

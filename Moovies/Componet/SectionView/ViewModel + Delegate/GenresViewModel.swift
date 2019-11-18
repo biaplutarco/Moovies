@@ -6,7 +6,7 @@
 //  Copyright © 2019 aluno. All rights reserved.
 //
 
-import CoreGraphics
+import Foundation
 
 class GenresViewModel: SectionViewModeling {
     var title: String = "Gêneros"

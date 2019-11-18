@@ -29,17 +29,13 @@ extension UICollectionView {
 }
 
 extension UICollectionView {
-//    var viewModel: CollectionViewModeling {
-//        get {
-//            return self.viewModel
-//        }
-//        set(newValue) {
-//            self.viewModel = newValue
-//        }
-//    }
-    
     static func makeFor(viewModel: CollectionViewModeling) -> UICollectionView {
-        let collectionView = viewModel.createCollectionView()
+        let flowLayout = viewModel.createCollectionViewFlowLayout()
+        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: flowLayout)
+        viewModel.registerCellTo(collectionView: collectionView)
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.showsVerticalScrollIndicator = false
+
         return collectionView
     }
 }

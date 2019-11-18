@@ -6,7 +6,7 @@
 //  Copyright © 2019 aluno. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 class MoviesViewModel: SectionViewModeling {
     var title: String = "Filmes"
