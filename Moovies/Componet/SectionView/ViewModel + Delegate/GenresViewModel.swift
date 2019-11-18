@@ -14,8 +14,12 @@ class GenresViewModel: SectionViewModeling {
     var data: [Any] = []
     
     var reloadData: (() -> Void)?
+    
+    init() {
+        getData()
+    }
    
-    func getData() {
+    private func getData() {
         APIManager.shared.getGenres { (genres) in
             if let genres = genres {
                 self.data.append(contentsOf: genres.genres)

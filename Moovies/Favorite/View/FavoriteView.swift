@@ -58,7 +58,6 @@ class FavoriteView: UIView {
     }
     
     func reloadData() {
-        viewModel.getData()
         getEmptyFeedback()
         viewModel.reloadData = {
             self.collectionView.reloadData()
@@ -96,7 +95,6 @@ extension FavoriteView: ViewCoding {
     func setupAdditionalConfiguration() {
         backgroundColor = .clear
         
-        viewModel.getData()
         getEmptyFeedback()
         viewModel.reloadData = {
             self.collectionView.reloadData()

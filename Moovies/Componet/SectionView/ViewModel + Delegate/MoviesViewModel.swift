@@ -19,6 +19,7 @@ class MoviesViewModel: SectionViewModeling {
     
     init(genre: Genre) {
         self.genreID = genre.id
+        getData()
     }
     
     private func getFavoriteMovies() -> [FavoriteMovie] {
@@ -37,7 +38,7 @@ class MoviesViewModel: SectionViewModeling {
         }
     }
     
-    func getData() {
+    private func getData() {
         APIManager.shared.getMoviesFromGenre(id: genreID) { (movies) in
             if let movies = movies {
                 self.data.append(contentsOf: movies.movies)

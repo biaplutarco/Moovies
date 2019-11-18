@@ -35,6 +35,7 @@ class FavoriteViewModel {
     
     init(delegate: FavoriteViewDelegate? = nil) {
         self.delegate = delegate
+        getData()
     }
     
     private func createMovie(from favoriteMovie: FavoriteMovie) -> Movie {
@@ -45,7 +46,7 @@ class FavoriteViewModel {
         return movie
     }
     
-    func getData() {
+    private func getData() {
         data = FavoriteMovie.all()
         reloadData?()
     }

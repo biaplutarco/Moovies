@@ -51,10 +51,10 @@ class MovieCollectionViewModel: CollectionViewModeling {
         
         if delegate.isMovieAlreadyFavorite(movie) == true {
             delegate.unFavorite(movie: movie)
-            cell.viewModel.changeStateOf(button: cell.favoriteButton, to: false)
+            cell.viewModel.isFavorited = false
         } else {
             delegate.favorite(movie: movie)
-            cell.viewModel.changeStateOf(button: cell.favoriteButton, to: true)
+            cell.viewModel.isFavorited = true
         }
     }
     

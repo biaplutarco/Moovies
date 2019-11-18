@@ -30,7 +30,7 @@ class APIManager: NSObject {
             completion(result)
         }
     }
-    
+    /*nao chama completion em casos de erro**/
     func get<T: Codable>(request: URLRequest, type: T.Type, completion: @escaping (T?) -> Void) {
         let getTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
             

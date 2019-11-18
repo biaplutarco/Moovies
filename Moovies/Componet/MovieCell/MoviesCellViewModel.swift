@@ -6,31 +6,26 @@
 //  Copyright © 2019 aluno. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 class MovieCellViewModel {
-    private let userDefaults = UserDefaults.standard
-
-    var posterPath: String?
+    private var movie: Movie
+    private var favoriteMoviesID = FavoriteMovie.all().map { Int($0.id) }
+   
     var title: String
-    
-    init(movie: Movie) {
-        self.posterPath = movie.posterPath
-        self.title = movie.title
-    }
-    
-    func changeStateOf(button: UIButton, to selected: Bool) {
-        button.isSelected = selected
-        
-        if button.isSelected == true {
-            userDefaults.set(true, forKey: title)
-        } else {
-            userDefaults.set(false, forKey: title)
+    var posterPath: String?
+    var reloadState: (() -> Void)?
+    var isFavorited: Bool {
+        didSet {
+            reloadState?()
         }
     }
     
-    func getStateOf(button: UIButton) -> Bool {
-        return userDefaults.bool(forKey: title)
+    init(movie: Movie) {
+        self.movie = movie
+        self.title = movie.title
+        self.posterPath = movie.posterPath
+        self.isFavorited = favoriteMoviesID.contains(movie.id)
     }
 }
 

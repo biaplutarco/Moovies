@@ -12,6 +12,5 @@ protocol SectionViewModeling {
     var title: String { get set }
     var data: [Any] { get set }
     var reloadData: (() -> Void)? { get set }
-    func getData()
 }
 

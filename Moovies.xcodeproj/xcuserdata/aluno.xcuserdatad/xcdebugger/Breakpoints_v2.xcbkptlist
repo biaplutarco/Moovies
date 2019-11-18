@@ -162,38 +162,6 @@
             endingLineNumber = "88"
             landmarkName = "addToFavorite()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "C51E9687-8BAE-49C5-BBA3-99BC6EC65134 - caf3008065507608"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Moovies.SearchMovieViewModel.(addToFavorite in _1CB246464F2C18270A1637B1EE7DDE1E)() -&gt; ()"
-                  moduleName = "Moovies"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aluno/Desktop/Moovies/Moovies/Search%20Movie/View/SearchMovieViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "88"
-                  endingLineNumber = "88"
-                  offsetFromSymbolStart = "28">
-               </Location>
-               <Location
-                  uuid = "C51E9687-8BAE-49C5-BBA3-99BC6EC65134 - b8562164956e6f89"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Moovies.Movie) -&gt; () in Moovies.SearchMovieViewModel.(addToFavorite in _1CB246464F2C18270A1637B1EE7DDE1E)() -&gt; ()"
-                  moduleName = "Moovies"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aluno/Desktop/Moovies/Moovies/Search%20Movie/View/SearchMovieViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "89"
-                  endingLineNumber = "89"
-                  offsetFromSymbolStart = "56">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -210,38 +178,6 @@
             endingLineNumber = "76"
             landmarkName = "removeFromFavorite()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "726F73A1-8CBE-4E27-AD7B-932D2CBC8EA1 - 7ff613cbd2efd2cd"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Moovies.SearchMovieViewModel.(removeFromFavorite in _1CB246464F2C18270A1637B1EE7DDE1E)() -&gt; ()"
-                  moduleName = "Moovies"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aluno/Desktop/Moovies/Moovies/Search%20Movie/View/SearchMovieViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "76"
-                  endingLineNumber = "76"
-                  offsetFromSymbolStart = "61">
-               </Location>
-               <Location
-                  uuid = "726F73A1-8CBE-4E27-AD7B-932D2CBC8EA1 - 7da221e57ee7409"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Moovies.Movie) -&gt; () in Moovies.SearchMovieViewModel.(removeFromFavorite in _1CB246464F2C18270A1637B1EE7DDE1E)() -&gt; ()"
-                  moduleName = "Moovies"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aluno/Desktop/Moovies/Moovies/Search%20Movie/View/SearchMovieViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "77"
-                  endingLineNumber = "77"
-                  offsetFromSymbolStart = "233">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -338,38 +274,6 @@
             endingLineNumber = "46"
             landmarkName = "checkInNewFavoriteMovies(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "2CDE5B65-0B90-4B35-B7B0-9ADF0833B545 - bc417cb8e5a1b1af"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Moovies.SearchMovieViewModel.(checkInNewFavoriteMovies in _1CB246464F2C18270A1637B1EE7DDE1E)(Moovies.Movie) -&gt; Swift.Bool"
-                  moduleName = "Moovies"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aluno/Desktop/Moovies/Moovies/Search%20Movie/View/SearchMovieViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "46"
-                  endingLineNumber = "46"
-                  offsetFromSymbolStart = "212">
-               </Location>
-               <Location
-                  uuid = "2CDE5B65-0B90-4B35-B7B0-9ADF0833B545 - 1162ea9468d1a169"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Moovies.Movie) -&gt; Swift.Bool in Moovies.SearchMovieViewModel.(checkInNewFavoriteMovies in _1CB246464F2C18270A1637B1EE7DDE1E)(Moovies.Movie) -&gt; Swift.Bool"
-                  moduleName = "Moovies"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aluno/Desktop/Moovies/Moovies/Search%20Movie/View/SearchMovieViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "47"
-                  endingLineNumber = "47"
-                  offsetFromSymbolStart = "82">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -402,38 +306,6 @@
             endingLineNumber = "77"
             landmarkName = "removeFromFavorite()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "114EA79B-C1EC-4AD1-944D-29195497B5F4 - 7da221e57ee7409"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Moovies.Movie) -&gt; () in Moovies.SearchMovieViewModel.(removeFromFavorite in _1CB246464F2C18270A1637B1EE7DDE1E)() -&gt; ()"
-                  moduleName = "Moovies"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aluno/Desktop/Moovies/Moovies/Search%20Movie/View/SearchMovieViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "77"
-                  endingLineNumber = "77"
-                  offsetFromSymbolStart = "233">
-               </Location>
-               <Location
-                  uuid = "114EA79B-C1EC-4AD1-944D-29195497B5F4 - ffac707a7a1459e5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Moovies.FavoriteMovie) -&gt; () in closure #1 (Moovies.Movie) -&gt; () in Moovies.SearchMovieViewModel.(removeFromFavorite in _1CB246464F2C18270A1637B1EE7DDE1E)() -&gt; ()"
-                  moduleName = "Moovies"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aluno/Desktop/Moovies/Moovies/Search%20Movie/View/SearchMovieViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "78"
-                  endingLineNumber = "78"
-                  offsetFromSymbolStart = "115">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

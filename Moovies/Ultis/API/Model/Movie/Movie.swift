@@ -19,7 +19,7 @@ struct Movie: Codable, Equatable {
         case posterPath = "poster_path"
     }
     
-    static func ==(lhs: Movie, rhs: Movie) -> Bool {
+    static func == (lhs: Movie, rhs: Movie) -> Bool {
         return lhs.id == rhs.id
     }
 }

@@ -11,7 +11,6 @@ import UIKit
 class SectionView: UIView {
     var viewModel: SectionViewModeling {
         didSet {
-            viewModel.getData()
             viewModel.reloadData = {
                 DispatchQueue.main.async {
                     self.collectionViewModel.data = self.viewModel.data
@@ -74,7 +73,6 @@ extension SectionView: ViewCoding {
     func setupAdditionalConfiguration() {
         backgroundColor = .clear
         
-        viewModel.getData()
         viewModel.reloadData = {
             DispatchQueue.main.async {
                 self.collectionViewModel.data = self.viewModel.data
