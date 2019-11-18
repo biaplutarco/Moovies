@@ -37,6 +37,14 @@ class FavoriteViewModel {
         self.delegate = delegate
     }
     
+    private func createMovie(from favoriteMovie: FavoriteMovie) -> Movie {
+        let movie = Movie(id: Int(favoriteMovie.id),
+                          title: favoriteMovie.title ?? "",
+                          overview: favoriteMovie.overview ?? "",
+                          posterPath: favoriteMovie.posterPath)
+        return movie
+    }
+    
     func getData() {
         data = FavoriteMovie.all()
         reloadData?()
@@ -44,11 +52,7 @@ class FavoriteViewModel {
     
     func getMovieCellViewModel(of index: Int) -> MovieCellViewModel {
         guard let favoritedMovie = data[index] as? FavoriteMovie else { fatalError("isn't a favorite movie") }
-        let movie = Movie(id: Int(favoritedMovie.id),
-                          title: favoritedMovie.title ?? "",
-                          overview: favoritedMovie.overview ?? "",
-                          posterPath: favoritedMovie.posterPath)
-        
+        let movie = createMovie(from: favoritedMovie)
         let viewModel = MovieCellViewModel(movie: movie)
         return viewModel
     }
