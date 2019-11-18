@@ -57,4 +57,10 @@ class FavoriteViewModel {
         let viewModel = MovieCellViewModel(movie: movie)
         return viewModel
     }
+    
+    func removeFromFavorites(at index: Int) {
+        guard let favoritedMovie = data[index] as? FavoriteMovie else { fatalError("isn't a favorite movie") }
+        favoritedMovie.destroy()
+        getData()
+    }
 }

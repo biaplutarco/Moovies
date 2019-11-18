@@ -116,4 +116,8 @@ extension FavoriteView: UICollectionViewDelegate, UICollectionViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         viewModel.itemSize
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.removeFromFavorites(at: indexPath.row)
+    }
 }
