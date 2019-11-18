@@ -20,14 +20,16 @@ class SearchMovieView: UIView {
     }()
     
     lazy var genreSectionView: SectionView = {
-        let genresViewModel = GenresViewModel(delegate: self)
-        let sectionView = SectionView(viewModel: genresViewModel)
+        let genresViewModel = GenresViewModel()
+        let collectionViewModel = GenreCollectionViewModel(data: genresViewModel.data, delegate: self)
+        let sectionView = SectionView(viewModel: genresViewModel, collectionViewModel: collectionViewModel)
         return sectionView
     }()
     
     lazy var movieSectionView: SectionView = {
         let moviesViewModel = MoviesViewModel(genre: Genre(id: 0, name: ""))
-        let sectionView = SectionView(viewModel: moviesViewModel)
+        let collectionViewModel = MovieCollectionViewModel(data: moviesViewModel.data, delegate: self)
+        let sectionView = SectionView(viewModel: moviesViewModel, collectionViewModel: collectionViewModel)
         return sectionView
     }()
     
@@ -98,7 +100,7 @@ extension SearchMovieView: ViewCoding {
     }
 }
 
-extension SearchMovieView: SectionViewDelegate {
+extension SearchMovieView: MovieCollectionViewModelDelegate, GenreCollectionViewModelDelegate {
     func isMovieAlreadyFavorite(_ movie: Movie) -> Bool {
         viewModel.isMovieAlreadyFavorite(movie)
     }
@@ -112,7 +114,10 @@ extension SearchMovieView: SectionViewDelegate {
     }
     
     func didSelectedGenre(_ genre: Genre) {
-        let moviesViewModel = MoviesViewModel(genre: genre, delegate: self)
+        let moviesViewModel = MoviesViewModel(genre: genre)
         movieSectionView.viewModel = moviesViewModel
+        let collectionViewModel = MovieCollectionViewModel(data: moviesViewModel.data, delegate: self)
+        movieSectionView.collectionViewModel = collectionViewModel
     }
 }
+

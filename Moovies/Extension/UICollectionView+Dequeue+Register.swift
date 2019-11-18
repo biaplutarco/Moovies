@@ -27,3 +27,19 @@ extension UICollectionView {
     }
     
 }
+
+extension UICollectionView {
+//    var viewModel: CollectionViewModeling {
+//        get {
+//            return self.viewModel
+//        }
+//        set(newValue) {
+//            self.viewModel = newValue
+//        }
+//    }
+    
+    static func makeFor(viewModel: CollectionViewModeling) -> UICollectionView {
+        let collectionView = viewModel.createCollectionView()
+        return collectionView
+    }
+}

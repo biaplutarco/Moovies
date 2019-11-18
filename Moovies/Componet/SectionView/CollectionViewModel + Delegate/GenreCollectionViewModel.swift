@@ -1,43 +1,29 @@
 //
-//  GenreViewModel.swift
+//  GenreCollectionViewModel.swift
 //  Moovies
 //
-//  Created by aluno on 12/11/19.
+//  Created by aluno on 17/11/19.
 //  Copyright © 2019 aluno. All rights reserved.
 //
 
 import UIKit
 
-class GenresViewModel: SectionViewModeling {
-    var delegate: SectionViewDelegate?
-
-    var title: String = "Gêneros"
+class GenreCollectionViewModel: CollectionViewModeling {
+    var delegate: CollectionViewModelDelegate?
     
-    var numberOfItems: Int = 0
-    
-    var data: [Any] = [] {
+    var data: [Any] {
         didSet {
             numberOfItems = data.count
         }
     }
     
-    var reloadData: (() -> Void)?
+    var numberOfItems: Int = 0
     
-    init(delegate: SectionViewDelegate? = nil) {
+    var itemSize: CGSize = CGSize(width: 140, height: 36)
+    
+    init(data: [Any], delegate: CollectionViewModelDelegate? = nil) {
+        self.data = data
         self.delegate = delegate
-    }
-    
-    func getData() {
-        APIManager.shared.getGenres { (genres) in
-            if let genres = genres {
-                self.data.append(contentsOf: genres.genres)
-                self.reloadData?()
-            } else {
-                let genreEmpty = Genre(id: 0, name: "loading")
-                self.data.append(genreEmpty)
-                self.reloadData?()
-            }
-        }
     }
     
     func registerCellTo(collectionView: UICollectionView) {
@@ -54,14 +40,10 @@ class GenresViewModel: SectionViewModeling {
         return cell
     }
     
-    func getItemSizeTo(collectionView: UICollectionView) -> CGSize {
-        return CGSize(width: 140, height: 36)
-    }
-    
     func didSelect(collectionView: UICollectionView, itemAt indexPath: IndexPath) {
-        if let genre = data[indexPath.row] as? Genre {
-            delegate?.didSelectedGenre(genre)
-        }
+        guard let genre = data[indexPath.row] as? Genre,
+            let delegate = delegate as? GenreCollectionViewModelDelegate else { fatalError("error casting")}
+        delegate.didSelectedGenre(genre)
     }
     
     func createCollectionViewFlowLayout() -> UICollectionViewFlowLayout {

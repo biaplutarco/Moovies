@@ -14,11 +14,14 @@ class SectionView: UIView {
             viewModel.getData()
             viewModel.reloadData = {
                 DispatchQueue.main.async {
+                    self.collectionViewModel.data = self.viewModel.data
                     self.collectionView.reloadData()
                 }
             }
         }
     }
+    
+    var collectionViewModel: CollectionViewModeling
         
     lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -27,15 +30,16 @@ class SectionView: UIView {
     }()
     
     lazy var collectionView: UICollectionView = {
-        let collectionView = viewModel.createCollectionView()
+        let collectionView = UICollectionView.makeFor(viewModel: collectionViewModel)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = .clear
         return collectionView
     }()
     
-    init(viewModel: SectionViewModeling) {
+    init(viewModel: SectionViewModeling, collectionViewModel: CollectionViewModeling) {
         self.viewModel = viewModel
+        self.collectionViewModel = collectionViewModel
         super.init(frame: CGRect.zero)
         setupView()
     }
@@ -73,6 +77,7 @@ extension SectionView: ViewCoding {
         viewModel.getData()
         viewModel.reloadData = {
             DispatchQueue.main.async {
+                self.collectionViewModel.data = self.viewModel.data
                 self.collectionView.reloadData()
             }
         }
@@ -83,18 +88,18 @@ extension SectionView: UICollectionViewDelegate, UICollectionViewDataSource,
 UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.numberOfItems
+        collectionViewModel.numberOfItems
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        viewModel.dequeueCellTo(collectionView: collectionView, indexPath: indexPath)
+        collectionViewModel.dequeueCellTo(collectionView: collectionView, indexPath: indexPath)
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.didSelect(collectionView: collectionView, itemAt: indexPath)
+        collectionViewModel.didSelect(collectionView: collectionView, itemAt: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return viewModel.getItemSizeTo(collectionView: collectionView)
+        collectionViewModel.itemSize
     }
 }

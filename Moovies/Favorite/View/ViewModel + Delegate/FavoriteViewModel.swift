@@ -17,12 +17,12 @@ class FavoriteViewModel {
     var buttonTitle: String = "Buscar filmes"
     
     var isEmptyMessage: String = "Você não tem filmes favoritados ainda. Adicione algum!"
+    
+    var isEmpty: Bool = true
         
     var numberOfItems: Int = 0
     
     var itemSize: CGSize = CGSize(width: 160, height: 220)
-    
-    var isEmpty: Bool = true
     
     var data: [Any] = FavoriteMovie.all() {
         didSet {
