@@ -40,6 +40,7 @@ class MovieCell: UICollectionViewCell {
         button.setImage(#imageLiteral(resourceName: "star"), for: .normal)
         button.setImage(#imageLiteral(resourceName: "starFill"), for: .selected)
         button.isSelected = viewModel.isFavorited
+        button.isUserInteractionEnabled = false
         return button
     }()
     
