@@ -59,6 +59,7 @@ class FavoriteView: UIView {
     
     func reloadData() {
         getEmptyFeedback()
+        viewModel.updateScreen()
         viewModel.reloadData = {
             self.collectionView.reloadData()
         }
@@ -109,7 +110,10 @@ extension FavoriteView: UICollectionViewDelegate, UICollectionViewDataSource, UI
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(of: MovieCell.self, forIndexPath: indexPath)
-        cell.viewModel = viewModel.getMovieCellViewModel(of: indexPath.row)
+        guard let viewModel = viewModel.getMovieCellViewModel(of: indexPath.row) else {
+            return UICollectionViewCell()
+        }
+        cell.viewModel = viewModel
         return cell
     }
     

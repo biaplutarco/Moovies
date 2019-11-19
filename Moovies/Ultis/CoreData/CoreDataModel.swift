@@ -36,6 +36,12 @@ extension CoreDataModel where Self: NSManagedObject {
         }
     }
     
+    static func destroy(_ movie: Movie) {
+        let predicate = NSPredicate(format: "title == %@", movie.title)
+        let favoritedMovie = FavoriteMovie.find(predicate: predicate)
+        favoritedMovie.forEach { $0.destroy() }
+    }
+    
     static func all() -> [Self] {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Self.className)
         fetchRequest.predicate = NSPredicate(value: true)

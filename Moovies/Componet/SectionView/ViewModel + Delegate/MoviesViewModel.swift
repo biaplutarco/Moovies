@@ -17,25 +17,19 @@ class MoviesViewModel: SectionViewModeling {
     
     private var genreID: Int
     
+    var allFavorites = FavoriteMovie.all()
+    
     init(genre: Genre) {
         self.genreID = genre.id
         getData()
     }
     
-    private func getFavoriteMovies() -> [FavoriteMovie] {
-        return FavoriteMovie.all()
-    }
-    
     private func checkFavorite(movie: Movie) -> Bool {
-        let favoriteIds = getFavoriteMovies().map { (favoriteMovie) -> Int in
+        let favoriteIds = allFavorites.map { (favoriteMovie) -> Int in
             return Int(favoriteMovie.id)
         }
         
-        if favoriteIds.contains(movie.id) {
-            return true
-        } else {
-            return false
-        }
+        return favoriteIds.contains(movie.id)
     }
     
     private func getData() {

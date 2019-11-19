@@ -34,21 +34,13 @@ class SearchMovieViewModel {
             return Int(favoriteMovie.id)
         }
         
-        if favoriteIds.contains(movie.id) {
-            return true
-        } else {
-            return false
-        }
+        return favoriteIds.contains(movie.id)
     }
     
     //  Checa se um Movie esta selectionado como um novo favorite movie
     private func checkInNewFavoriteMovies(_ movie: Movie) -> Bool {
         newFavoriteMovies.contains { (favoriteMovie) -> Bool in
-            if favoriteMovie == movie {
-                return true
-            } else {
-                return false
-            }
+            return favoriteMovie == movie
         }
     }
     
@@ -112,11 +104,7 @@ class SearchMovieViewModel {
     //  E chama as funçoes
     func isMovieAlreadyFavorite(_ movie: Movie) -> Bool {
         newFavoriteMovies.contains(where: { (favoriteMovie) -> Bool in
-            if favoriteMovie.id == movie.id {
-                return true
-            } else {
-                return false
-            }
+            return favoriteMovie.id == movie.id
         })
     }
 }

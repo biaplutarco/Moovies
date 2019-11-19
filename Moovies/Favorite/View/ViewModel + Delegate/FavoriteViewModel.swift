@@ -24,10 +24,11 @@ class FavoriteViewModel {
     
     var itemSize: CGSize = CGSize(width: 160, height: 220)
     
-    var data: [Any] = FavoriteMovie.all() {
+    var movies = [Movie]() {
         didSet {
-            numberOfItems = data.count
-            isEmpty = data.isEmpty
+            numberOfItems = movies.count
+            isEmpty = movies.isEmpty
+            reloadData?()
         }
     }
     
@@ -38,29 +39,34 @@ class FavoriteViewModel {
         getData()
     }
     
-    private func createMovie(from favoriteMovie: FavoriteMovie) -> Movie {
+    func createMovie(from favoriteMovie: FavoriteMovie) -> Movie? {
+        guard let title = favoriteMovie.title, let overview = favoriteMovie.overview else {
+            return nil
+        }
         let movie = Movie(id: Int(favoriteMovie.id),
-                          title: favoriteMovie.title ?? "",
-                          overview: favoriteMovie.overview ?? "",
+                          title: title,
+                          overview: overview,
                           posterPath: favoriteMovie.posterPath)
         return movie
     }
     
-    private func getData() {
-        data = FavoriteMovie.all()
-        reloadData?()
+    func updateScreen() {
+        getData()
     }
     
-    func getMovieCellViewModel(of index: Int) -> MovieCellViewModel {
-        guard let favoritedMovie = data[index] as? FavoriteMovie else { fatalError("isn't a favorite movie") }
-        let movie = createMovie(from: favoritedMovie)
-        let viewModel = MovieCellViewModel(movie: movie)
+    private func getData() {
+        let data = FavoriteMovie.all()
+        movies = data.compactMap { createMovie(from: $0) }
+    }
+    
+    func getMovieCellViewModel(of index: Int) -> MovieCellViewModel? {
+        let viewModel = MovieCellViewModel(movie: movies[index])
         return viewModel
     }
     
     func removeFromFavorites(at index: Int) {
-        guard let favoritedMovie = data[index] as? FavoriteMovie else { fatalError("isn't a favorite movie") }
-        favoritedMovie.destroy()
-        getData()
+        let movie = movies[index]
+        FavoriteMovie.destroy(movie)
+        updateScreen()
     }
 }

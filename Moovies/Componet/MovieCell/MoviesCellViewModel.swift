@@ -12,7 +12,7 @@ class MovieCellViewModel {
     private var movie: Movie
     private var favoriteMoviesID = FavoriteMovie.all().map { Int($0.id) }
    
-    var title: String
+    var title: String = "O titulo não está disponível na sua localidade"
     var posterPath: String?
     var reloadState: (() -> Void)?
     var isFavorited: Bool {

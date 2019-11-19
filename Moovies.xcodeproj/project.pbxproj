@@ -29,6 +29,7 @@
 		5762ECD9237FB00A001B741A /* SearchMovieViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5762ECD8237FB00A001B741A /* SearchMovieViewDelegate.swift */; };
 		577855BA23822B96001740E1 /* MovieCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577855B923822B96001740E1 /* MovieCollectionViewModel.swift */; };
 		577855BD238231E1001740E1 /* GenreCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577855BC238231E1001740E1 /* GenreCollectionViewModel.swift */; };
+		577855C5238327D6001740E1 /* FavoriteViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577855C4238327D6001740E1 /* FavoriteViewModelTests.swift */; };
 		5787D93D237367CA00FC01F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787D93C237367CA00FC01F2 /* AppDelegate.swift */; };
 		5787D946237367CF00FC01F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5787D945237367CF00FC01F2 /* Assets.xcassets */; };
 		5787D949237367CF00FC01F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5787D947237367CF00FC01F2 /* LaunchScreen.storyboard */; };
@@ -93,6 +94,7 @@
 		5762ECD8237FB00A001B741A /* SearchMovieViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieViewDelegate.swift; sourceTree = "<group>"; };
 		577855B923822B96001740E1 /* MovieCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewModel.swift; sourceTree = "<group>"; };
 		577855BC238231E1001740E1 /* GenreCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCollectionViewModel.swift; sourceTree = "<group>"; };
+		577855C4238327D6001740E1 /* FavoriteViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModelTests.swift; sourceTree = "<group>"; };
 		5787D939237367CA00FC01F2 /* Moovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5787D93C237367CA00FC01F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5787D945237367CF00FC01F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 		5787D952237367CF00FC01F2 /* MooviesTests */ = {
 			isa = PBXGroup;
 			children = (
+				577855C4238327D6001740E1 /* FavoriteViewModelTests.swift */,
 				5787D953237367CF00FC01F2 /* MooviesTests.swift */,
 				5787D955237367CF00FC01F2 /* Info.plist */,
 			);
@@ -622,6 +625,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5787D954237367CF00FC01F2 /* MooviesTests.swift in Sources */,
+				577855C5238327D6001740E1 /* FavoriteViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
