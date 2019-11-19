@@ -19,18 +19,15 @@ class SearchMovieViewModel {
     
     var newUnFavoriteMovies: [Movie] = []
     
+    var favoriteMovies = FavoriteMovie.all()
+    
     init(delegate: SearchMovieViewDelegate? = nil) {
         self.delegate = delegate
     }
     
-    //  Pega os filmes que ja estao no CoreData
-    private func getFavoriteMovies() -> [FavoriteMovie] {
-        return FavoriteMovie.all()
-    }
-    
     //  Checa se um Movie ja esta no CoreData
     private func checkInFavorites(movie: Movie) -> Bool {
-        let favoriteIds = getFavoriteMovies().map { (favoriteMovie) -> Int in
+        let favoriteIds = favoriteMovies.map { (favoriteMovie) -> Int in
             return Int(favoriteMovie.id)
         }
         
@@ -63,10 +60,8 @@ class SearchMovieViewModel {
     //  Melhorar isso ta bem feio
     //  Remove um filme do CoreData
     private func removeFromFavorite() {
-        let favorite = getFavoriteMovies()
-        
         newUnFavoriteMovies.forEach { (movie) in
-            favorite.forEach { (favoriteMovie) in
+            favoriteMovies.forEach { (favoriteMovie) in
                 if favoriteMovie.id == movie.id {
                     favoriteMovie.destroy()
                     unFavorite(movie: movie)

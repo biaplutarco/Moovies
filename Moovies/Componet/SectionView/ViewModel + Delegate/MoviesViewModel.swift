@@ -25,10 +25,7 @@ class MoviesViewModel: SectionViewModeling {
     }
     
     private func checkFavorite(movie: Movie) -> Bool {
-        let favoriteIds = allFavorites.map { (favoriteMovie) -> Int in
-            return Int(favoriteMovie.id)
-        }
-        
+        let favoriteIds = allFavorites.map { Int($0.id) }
         return favoriteIds.contains(movie.id)
     }
     
