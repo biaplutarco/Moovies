@@ -46,12 +46,14 @@
 		5787D9912374FDE200FC01F2 /* Genres.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787D9902374FDE200FC01F2 /* Genres.swift */; };
 		5787D993237503EB00FC01F2 /* GenreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787D992237503EB00FC01F2 /* GenreCell.swift */; };
 		5787D9952375042100FC01F2 /* GenreCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787D9942375042100FC01F2 /* GenreCellViewModel.swift */; };
-		57DFC50123761453003698D0 /* Moovies.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 57DFC4FF23761453003698D0 /* Moovies.xcdatamodeld */; };
 		57DFC50323761596003698D0 /* ActiveRecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DFC50223761596003698D0 /* ActiveRecordType.swift */; };
 		57DFC50523761602003698D0 /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DFC50423761602003698D0 /* CoreDataModel.swift */; };
 		57DFC50723761650003698D0 /* NSManagedObject+className.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DFC50623761650003698D0 /* NSManagedObject+className.swift */; };
 		57DFC50F23761874003698D0 /* FavoriteMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DFC50E23761874003698D0 /* FavoriteMovie.swift */; };
 		57DFC51523762475003698D0 /* UIColor+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DFC51423762475003698D0 /* UIColor+AppColors.swift */; };
+		57F73EB42384D48F00F6970A /* Moovies.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 57F73EB22384D48F00F6970A /* Moovies.xcdatamodeld */; };
+		57F73EB52384D48F00F6970A /* Moovies.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 57F73EB22384D48F00F6970A /* Moovies.xcdatamodeld */; };
+		57F73EB62384D48F00F6970A /* Moovies.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 57F73EB22384D48F00F6970A /* Moovies.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,12 +119,12 @@
 		5787D9902374FDE200FC01F2 /* Genres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genres.swift; sourceTree = "<group>"; };
 		5787D992237503EB00FC01F2 /* GenreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCell.swift; sourceTree = "<group>"; };
 		5787D9942375042100FC01F2 /* GenreCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCellViewModel.swift; sourceTree = "<group>"; };
-		57DFC50023761453003698D0 /* Coredata.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Coredata.xcdatamodel; sourceTree = "<group>"; };
 		57DFC50223761596003698D0 /* ActiveRecordType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveRecordType.swift; sourceTree = "<group>"; };
 		57DFC50423761602003698D0 /* CoreDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataModel.swift; sourceTree = "<group>"; };
 		57DFC50623761650003698D0 /* NSManagedObject+className.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+className.swift"; sourceTree = "<group>"; };
 		57DFC50E23761874003698D0 /* FavoriteMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMovie.swift; sourceTree = "<group>"; };
 		57DFC51423762475003698D0 /* UIColor+AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AppColors.swift"; sourceTree = "<group>"; };
+		57F73EB32384D48F00F6970A /* Coredata.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Coredata.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -336,8 +338,8 @@
 				5762ECC1237F7517001B741A /* Search Movie */,
 				5762ECCA237F77A9001B741A /* Componet */,
 				5787D945237367CF00FC01F2 /* Assets.xcassets */,
+				57F73EB22384D48F00F6970A /* Moovies.xcdatamodeld */,
 				5787D947237367CF00FC01F2 /* LaunchScreen.storyboard */,
-				57DFC4FF23761453003698D0 /* Moovies.xcdatamodeld */,
 				5787D94A237367CF00FC01F2 /* Info.plist */,
 			);
 			path = Moovies;
@@ -578,12 +580,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				57DFC50523761602003698D0 /* CoreDataModel.swift in Sources */,
-				57DFC50123761453003698D0 /* Moovies.xcdatamodeld in Sources */,
 				5787D97923739B7400FC01F2 /* Movies.swift in Sources */,
 				5787D9842373A63E00FC01F2 /* UIImageView+GetImageFromPath.swift in Sources */,
 				57DFC51523762475003698D0 /* UIColor+AppColors.swift in Sources */,
 				5787D93D237367CA00FC01F2 /* AppDelegate.swift in Sources */,
 				573D5E7D237B983000EF7EE9 /* MoviesViewModel.swift in Sources */,
+				57F73EB42384D48F00F6970A /* Moovies.xcdatamodeld in Sources */,
 				5762ECB9237F5FF0001B741A /* FavoriteView.swift in Sources */,
 				5762ECD9237FB00A001B741A /* SearchMovieViewDelegate.swift in Sources */,
 				573D5E71237B3FED00EF7EE9 /* Coordinator.swift in Sources */,
@@ -624,6 +626,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57F73EB52384D48F00F6970A /* Moovies.xcdatamodeld in Sources */,
 				5787D954237367CF00FC01F2 /* MooviesTests.swift in Sources */,
 				577855C5238327D6001740E1 /* FavoriteViewModelTests.swift in Sources */,
 			);
@@ -633,6 +636,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57F73EB62384D48F00F6970A /* Moovies.xcdatamodeld in Sources */,
 				5787D95F237367CF00FC01F2 /* MooviesUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -940,14 +944,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		57DFC4FF23761453003698D0 /* Moovies.xcdatamodeld */ = {
+		57F73EB22384D48F00F6970A /* Moovies.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				57DFC50023761453003698D0 /* Coredata.xcdatamodel */,
+				57F73EB32384D48F00F6970A /* Coredata.xcdatamodel */,
 			);
-			currentVersion = 57DFC50023761453003698D0 /* Coredata.xcdatamodel */;
-			name = Moovies.xcdatamodeld;
-			path = ../../Coredata/Coredata/Moovies.xcdatamodeld;
+			currentVersion = 57F73EB32384D48F00F6970A /* Coredata.xcdatamodel */;
+			path = Moovies.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
